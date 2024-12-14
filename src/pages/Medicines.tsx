@@ -183,115 +183,101 @@ const products: Product[] = [
 ];
 
 export default function Medicines() {
-  const [activeTab, setActiveTab] = useState("prescriptions");
-  const [cart, setCart] = useState<Product[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [activeTab, setActiveTab] = useState('pharmacy');
   const [selectedCategory, setSelectedCategory] = useState("All Products");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [cartItems, setCartItems] = useState<{ product: Product; quantity: number }[]>([]);
+  const [showCart, setShowCart] = useState(false);
 
-  // Filter products based on search term and category
   const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
-      const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchTerm.toLowerCase());
-      
+    return products.filter(product => {
       const matchesCategory = selectedCategory === "All Products" || product.category === selectedCategory;
-      
-      return matchesSearch && matchesCategory;
+      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          product.description.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
     });
-  }, [searchTerm, selectedCategory]);
+  }, [selectedCategory, searchQuery]);
 
   const addToCart = (product: Product) => {
     if (product.prescription) {
-      toast.error('This product requires a prescription. Please upload one in E-Prescriptions.');
+      toast.error("This medicine requires a prescription. Please upload a valid prescription.");
       return;
     }
-    setCart([...cart, product]);
+    
+    setCartItems(prev => {
+      const existingItem = prev.find(item => item.product.id === product.id);
+      if (existingItem) {
+        return prev.map(item =>
+          item.product.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prev, { product, quantity: 1 }];
+    });
     toast.success(`${product.name} added to cart`);
   };
 
-  const removeFromCart = (productId: string) => {
-    setCart(cart.filter((item) => item.id !== productId));
-    toast.success("Item removed from cart");
+  const updateQuantity = (productId: string, quantity: number) => {
+    setCartItems(prev =>
+      prev.map(item =>
+        item.product.id === productId
+          ? { ...item, quantity: Math.max(0, quantity) }
+          : item
+      ).filter(item => item.quantity > 0)
+    );
   };
 
-  // Create SearchAndFilter component
-  interface SearchAndFilterProps {
-    searchTerm: string;
-    setSearchTerm: (term: string) => void;
-    selectedCategory: string;
-    setSelectedCategory: (category: string) => void;
-    categories: string[];
-  }
-
-  function SearchAndFilter({
-    searchTerm,
-    setSearchTerm,
-    selectedCategory,
-    setSelectedCategory,
-    categories,
-  }: SearchAndFilterProps) {
-    return (
-      <div className="space-y-4">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-          <input
-            type="text"
-            placeholder="Search products..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        
-        <div className="flex flex-wrap gap-2">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                selectedCategory === category
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  }
+  const cartTotal = cartItems.reduce(
+    (total, item) => total + item.product.price * item.quantity,
+    0
+  );
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="text-center mb-12">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          Medicine Management & Healthcare Store
-        </h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Your one-stop destination for all healthcare needs. From prescriptions to wellness products,
-          we've got you covered with quality healthcare items.
-        </p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
+      <div className="container mx-auto px-4 py-4 sm:py-8">
+        {/* Header */}
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2 sm:mb-4">
+            Pharmacy & Medicine Management
+          </h1>
+          <p className="text-sm sm:text-base text-gray-600">
+            Order medicines, set reminders, and manage your prescriptions
+          </p>
+        </div>
 
-      <div data-tabs-value={activeTab}>
+        {/* Main Navigation */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="flex justify-center space-x-2 mb-8 flex-wrap">
-            <TabsTrigger value="prescriptions" className="flex items-center space-x-2">
+          <TabsList className="flex flex-wrap justify-start sm:justify-center gap-2 mb-6 sm:mb-8 overflow-x-auto">
+            <TabsTrigger
+              value="pharmacy"
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
+                activeTab === 'pharmacy'
+                  ? 'bg-emerald-600 text-white'
+                  : 'text-gray-600 hover:bg-gray-100'
+              }`}
+            >
+              <Building2 className="h-4 w-4" />
+              <span>Pharmacy</span>
+            </TabsTrigger>
+
+            <TabsTrigger
+              value="prescriptions"
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
+                activeTab === 'prescriptions'
+                  ? 'bg-emerald-600 text-white'
+                  : 'text-gray-600 hover:bg-gray-100'
+              }`}
+            >
               <FileText className="h-4 w-4" />
               <span>E-Prescriptions</span>
             </TabsTrigger>
 
-            <TabsTrigger value="pharmacy" className="flex items-center space-x-2">
-              <Building2 className="h-4 w-4" />
-              <span>Healthcare Store</span>
-            </TabsTrigger>
-
             <TabsTrigger
               value="reminders"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
                 activeTab === 'reminders'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-emerald-600 text-white'
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
@@ -301,9 +287,9 @@ export default function Medicines() {
 
             <TabsTrigger
               value="offers"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
                 activeTab === 'offers'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-emerald-600 text-white'
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
@@ -312,171 +298,100 @@ export default function Medicines() {
             </TabsTrigger>
 
             <TabsTrigger
-              value="subscriptions"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
-                activeTab === 'subscriptions'
-                  ? 'bg-blue-600 text-white'
+              value="subscription"
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
+                activeTab === 'subscription'
+                  ? 'bg-emerald-600 text-white'
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
               <Package className="h-4 w-4" />
-              <span>Subscriptions</span>
+              <span>Subscription</span>
             </TabsTrigger>
 
             <TabsTrigger
               value="alternatives"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
                 activeTab === 'alternatives'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-emerald-600 text-white'
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
               <Search className="h-4 w-4" />
-              <span>Find Alternatives</span>
+              <span>Alternatives</span>
             </TabsTrigger>
           </TabsList>
 
-          <div className="mt-6">
-            <TabsContent value="prescriptions">
+          <div className="mt-4 sm:mt-6">
+            <TabsContent value="pharmacy" className="focus:outline-none">
+              {/* Search and Category Filter */}
+              <div className="mb-6 space-y-4">
+                <input
+                  type="text"
+                  placeholder="Search medicines, devices, and more..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                />
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      className={`px-3 py-1.5 rounded-full text-xs sm:text-sm whitespace-nowrap transition-colors ${
+                        selectedCategory === category
+                          ? 'bg-emerald-600 text-white'
+                          : 'bg-white text-gray-600 hover:bg-gray-100'
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Products Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {filteredProducts.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    onAddToCart={addToCart}
+                  />
+                ))}
+              </div>
+
+              {/* Cart */}
+              <Cart
+                items={cartItems}
+                total={cartTotal}
+                onUpdateQuantity={updateQuantity}
+                onClose={() => setShowCart(false)}
+                show={showCart}
+              />
+            </TabsContent>
+
+            <TabsContent value="prescriptions" className="focus:outline-none">
               <EPrescriptions />
             </TabsContent>
 
-            <TabsContent value="pharmacy">
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                <div className="lg:col-span-3">
-                  <div className="bg-white p-4 rounded-lg shadow mb-6">
-                    <SearchAndFilter
-                      searchTerm={searchTerm}
-                      setSearchTerm={setSearchTerm}
-                      selectedCategory={selectedCategory}
-                      setSelectedCategory={setSelectedCategory}
-                      categories={categories}
-                    />
-                  </div>
-
-                  {/* Products Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filteredProducts.map(product => (
-                      <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                        <div className="relative">
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                            className="w-full h-48 object-cover"
-                          />
-                          {!product.inStock && (
-                            <div className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-sm">
-                              Out of Stock
-                            </div>
-                          )}
-                        </div>
-                        <div className="p-4">
-                          <div className="flex justify-between items-start mb-2">
-                            <h3 className="text-lg font-semibold">{product.name}</h3>
-                            <span className="text-blue-600 font-bold">₹{product.price}</span>
-                          </div>
-                          <p className="text-gray-600 text-sm mb-2">{product.description}</p>
-                          <div className="flex items-center mb-3">
-                            <div className="flex items-center">
-                              {[...Array(5)].map((_, i) => (
-                                <svg
-                                  key={i}
-                                  className={`w-4 h-4 ${
-                                    i < Math.floor(product.rating)
-                                      ? 'text-yellow-400'
-                                      : 'text-gray-300'
-                                  }`}
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                >
-                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                              ))}
-                            </div>
-                            <span className="text-gray-500 text-sm ml-2">({product.reviews})</span>
-                          </div>
-                          <button
-                            onClick={() => addToCart(product)}
-                            disabled={!product.inStock || product.prescription}
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                          >
-                            {product.prescription
-                              ? 'Requires Prescription'
-                              : !product.inStock
-                              ? 'Out of Stock'
-                              : 'Add to Cart'}
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Cart Section */}
-                <div className="lg:col-span-1 sticky top-4">
-                  <Cart 
-                    items={cart.map(product => ({ product, quantity: 1 }))}
-                    onUpdateQuantity={(productId, change) => {
-                      if (change < 0) {
-                        removeFromCart(productId);
-                      }
-                    }}
-                    onRemoveItem={removeFromCart}
-                  />
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="reminders">
+            <TabsContent value="reminders" className="focus:outline-none">
               <MedicineReminder />
             </TabsContent>
 
-            <TabsContent value="offers">
+            <TabsContent value="offers" className="focus:outline-none">
               <DiscountOffers />
             </TabsContent>
 
-            <TabsContent value="subscriptions">
+            <TabsContent value="subscription" className="focus:outline-none">
               <SubscriptionService />
             </TabsContent>
 
-            <TabsContent value="alternatives">
+            <TabsContent value="alternatives" className="focus:outline-none">
               <AlternativeMedicineFinder />
             </TabsContent>
           </div>
         </Tabs>
-      </div>
-
-      {/* Quick Actions */}
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-blue-50 rounded-lg p-6">
-          <h3 className="font-medium text-blue-900 mb-2">Need Help?</h3>
-          <p className="text-sm text-blue-700">
-            Our healthcare experts are available 24/7 to assist you with your medicine-related queries.
-          </p>
-          <button className="mt-4 w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-            Contact Support
-          </button>
-        </div>
-
-        <div className="bg-green-50 rounded-lg p-6">
-          <h3 className="font-medium text-green-900 mb-2">Schedule a Consultation</h3>
-          <p className="text-sm text-green-700">
-            Talk to a pharmacist about your medications and get expert advice.
-          </p>
-          <button className="mt-4 w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
-            Book Appointment
-          </button>
-        </div>
-
-        <div className="bg-purple-50 rounded-lg p-6">
-          <h3 className="font-medium text-purple-900 mb-2">Medicine Information</h3>
-          <p className="text-sm text-purple-700">
-            Access detailed information about your medicines, including side effects and interactions.
-          </p>
-          <button className="mt-4 w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
-            Learn More
-          </button>
-        </div>
       </div>
     </div>
   );

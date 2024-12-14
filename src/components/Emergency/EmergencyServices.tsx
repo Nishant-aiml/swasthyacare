@@ -57,7 +57,7 @@ export default function EmergencyServices() {
           description="Purchase medicines and supplies"
           bgColor="bg-blue-50 hover:bg-blue-100"
           onClick={() => {
-            navigate('/pharmacy');
+            navigate('/medicines');
             toast.success("Welcome to our Online Pharmacy", {
               description: "Browse and purchase healthcare products securely."
             });

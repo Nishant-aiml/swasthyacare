@@ -48,46 +48,45 @@ export default function ChatInterface({
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)] max-w-2xl mx-auto p-4">
-      <div className="flex-1 overflow-hidden bg-white rounded-lg shadow">
-        <ScrollArea className="h-full p-4">
-          <div className="space-y-4">
-            {messages.map((message, index) => (
+    <div className="flex flex-col bg-white rounded-xl shadow-md h-[600px] overflow-hidden">
+      <ScrollArea className="flex-1 p-4">
+        <div className="space-y-4">
+          {messages.map((message, index) => (
+            <div
+              key={index}
+              className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+            >
               <div
-                key={index}
-                className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                className={`max-w-[80%] rounded-lg p-3 ${
+                  message.type === 'user'
+                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-sm'
+                    : 'bg-gray-100 text-gray-900'
+                }`}
               >
-                <div
-                  className={`max-w-[80%] rounded-lg p-3 ${
-                    message.type === 'user'
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-900'
-                  }`}
-                >
-                  <p className="whitespace-pre-wrap">{message.content}</p>
-                  {message.options && onOptionClick && (
-                    <div className="mt-2 space-x-2">
-                      {message.options.map((option) => (
-                        <Button
-                          key={option}
-                          variant="secondary"
-                          size="sm"
-                          onClick={() => onOptionClick(option)}
-                        >
-                          {option}
-                        </Button>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <p className="whitespace-pre-wrap text-sm">{message.content}</p>
+                {message.options && onOptionClick && (
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {message.options.map((option) => (
+                      <Button
+                        key={option}
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => onOptionClick(option)}
+                        className="text-xs py-1 px-2 h-auto min-h-[24px]"
+                      >
+                        {option}
+                      </Button>
+                    ))}
+                  </div>
+                )}
               </div>
-            ))}
-            <div ref={messagesEndRef} />
-          </div>
-        </ScrollArea>
-      </div>
+            </div>
+          ))}
+          <div ref={messagesEndRef} />
+        </div>
+      </ScrollArea>
 
-      <div className="mt-4">
+      <div className="p-4 border-t bg-gray-50">
         <div className="flex space-x-2">
           <Input
             ref={inputRef}
@@ -101,6 +100,7 @@ export default function ChatInterface({
           <Button
             onClick={onSendMessage}
             disabled={loading || !userInput.trim()}
+            className="px-3"
           >
             {loading ? (
               <Loader2 className="h-4 w-4 animate-spin" />

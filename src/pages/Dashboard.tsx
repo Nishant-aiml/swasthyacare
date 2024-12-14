@@ -77,6 +77,12 @@ const Dashboard: React.FC = () => {
               {/* Emergency Services */}
               <EmergencyServices />
 
+              {/* Wearable Sync */}
+              <div className="bg-white rounded-lg shadow-sm p-6 border border-orange-100">
+                <h2 className="text-xl font-semibold text-orange-600 mb-4">Wearable Devices</h2>
+                <WearableSync />
+              </div>
+
               {/* Stats Grid */}
               <div className="grid grid-cols-2 gap-6">
                 <StatCard
@@ -133,19 +139,6 @@ const Dashboard: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div className="container mx-auto px-4 py-8">
-          <div className="bg-white rounded-lg shadow-lg p-6 mt-8">
-            <div className="mb-4">
-              <h2 className="text-xl font-semibold text-gray-900">Nearby Healthcare Services</h2>
-              <p className="text-gray-600 text-sm mt-1">
-                Find hospitals, clinics, pharmacies, and ambulance services in your area
-              </p>
-            </div>
-            <div className="h-[500px] rounded-lg overflow-hidden border border-gray-200">
-              <HealthcareMap height="100%" showFullscreenControl={true} />
             </div>
           </div>
         </div>

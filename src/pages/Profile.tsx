@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import NotificationCenter from '../components/Notifications/NotificationCenter';
 import HealthRecordsVault from '../components/Profile/HealthRecordsVault';
 import MembershipPlans from '../components/Profile/MembershipPlans';
 import FamilyAccount from '../components/Profile/FamilyAccount';
@@ -14,25 +13,22 @@ export default function Profile() {
   const { user } = useAuth();
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-8">
+    <div className="container mx-auto px-4 py-4 sm:py-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Profile & Settings</h1>
-          <p className="mt-2 text-gray-600">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Profile & Settings</h1>
+          <p className="mt-1 sm:mt-2 text-sm sm:text-base text-gray-600">
             Manage your health records, family accounts, and subscription plans
           </p>
-        </div>
-        <div className="flex items-center space-x-4">
-          <NotificationCenter />
         </div>
       </div>
 
       <div data-tabs-value={activeTab}>
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="flex justify-center space-x-2 mb-8">
+          <TabsList className="flex flex-wrap justify-start sm:justify-center gap-2 mb-6 sm:mb-8 overflow-x-auto">
             <TabsTrigger
               value="ids"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
                 activeTab === 'ids'
                   ? 'bg-blue-600 text-white'
                   : 'text-gray-600 hover:bg-gray-100'
@@ -44,7 +40,7 @@ export default function Profile() {
 
             <TabsTrigger
               value="records"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
                 activeTab === 'records'
                   ? 'bg-blue-600 text-white'
                   : 'text-gray-600 hover:bg-gray-100'
@@ -56,7 +52,7 @@ export default function Profile() {
 
             <TabsTrigger
               value="membership"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
                 activeTab === 'membership'
                   ? 'bg-blue-600 text-white'
                   : 'text-gray-600 hover:bg-gray-100'
@@ -68,7 +64,7 @@ export default function Profile() {
 
             <TabsTrigger
               value="family"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
                 activeTab === 'family'
                   ? 'bg-blue-600 text-white'
                   : 'text-gray-600 hover:bg-gray-100'
@@ -80,7 +76,7 @@ export default function Profile() {
 
             <TabsTrigger
               value="history"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
                 activeTab === 'history'
                   ? 'bg-blue-600 text-white'
                   : 'text-gray-600 hover:bg-gray-100'
@@ -91,24 +87,24 @@ export default function Profile() {
             </TabsTrigger>
           </TabsList>
 
-          <div className="mt-6">
-            <TabsContent value="ids">
+          <div className="mt-4 sm:mt-6">
+            <TabsContent value="ids" className="focus:outline-none">
               <ProfileIDs />
             </TabsContent>
 
-            <TabsContent value="records">
+            <TabsContent value="records" className="focus:outline-none">
               <HealthRecordsVault />
             </TabsContent>
 
-            <TabsContent value="membership">
+            <TabsContent value="membership" className="focus:outline-none">
               <MembershipPlans />
             </TabsContent>
 
-            <TabsContent value="family">
+            <TabsContent value="family" className="focus:outline-none">
               <FamilyAccount />
             </TabsContent>
 
-            <TabsContent value="history">
+            <TabsContent value="history" className="focus:outline-none">
               <HealthHistoryAnalysis />
             </TabsContent>
           </div>

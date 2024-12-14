@@ -211,23 +211,6 @@ export default function EmergencyServicesMap() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-        <h2 className="text-lg font-semibold text-red-800 mb-2">Emergency Services Locator</h2>
-        <p className="text-sm text-red-700">
-          Find the nearest emergency services to your location. Click on a service to get directions.
-          In case of emergency, please also call your local emergency number.
-        </p>
-      </div>
-
-      {/* Mobile Toggle Button */}
-      <button
-        className="md:hidden w-full py-2 px-4 bg-white border border-gray-200 rounded-lg shadow flex items-center justify-center gap-2"
-        onClick={() => setShowList(!showList)}
-      >
-        <span>{showList ? 'Hide' : 'Show'} Service List</span>
-        <ChevronUp className={`w-4 h-4 transform transition-transform ${showList ? '' : 'rotate-180'}`} />
-      </button>
-
       <div className="flex flex-col md:flex-row gap-6 relative">
         {/* Service List - Hidden by default on mobile */}
         <div className={`${showList ? 'block' : 'hidden'} md:block w-full md:w-1/3 space-y-4`}>
