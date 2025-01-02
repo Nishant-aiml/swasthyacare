@@ -7,7 +7,7 @@ import { Forums } from '@/components/Resources/Forums';
 import { HealthGroups } from '@/components/Resources/HealthGroups';
 import { ChatRooms } from '@/components/Resources/ChatRooms';
 import { UserContentSharing } from '@/components/Resources/UserContent';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs"
 import { Video, MessageCircle, Headphones, Box, Users, MessageSquare, Share2 } from 'lucide-react';
 import { toast } from 'sonner';
 import {

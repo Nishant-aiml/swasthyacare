@@ -6,7 +6,7 @@ import SubscriptionService from '../components/Medicines/SubscriptionService';
 import AlternativeMedicineFinder from '../components/Medicines/AlternativeMedicineFinder';
 import Cart from '@/components/Pharmacy/Cart';
 import ProductCard from '@/components/Pharmacy/ProductCard';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/Tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { FileText, Bell, Tag, Package, Search, Building2 } from 'lucide-react';
 import { toast } from 'sonner';
 

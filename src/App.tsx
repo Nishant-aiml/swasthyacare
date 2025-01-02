@@ -19,6 +19,7 @@ import { AuthProvider } from './context/AuthContext';
 import { DailyHealthTrivia } from '@/components/Games/DailyHealthTrivia';
 import { RapidFireQuiz } from '@/components/Games/RapidFireQuiz';
 import { WellnessWheel } from '@/components/Games/WellnessWheel';
+import { PWAInstall } from './components/PWAInstall';
 
 // Protected Route wrapper component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -197,7 +198,9 @@ function AppContent() {
       <main className="flex-grow">
         <AppRoutes />
       </main>
+      <PWAInstall />
       <Footer />
+      <Toaster position="top-right" />
     </div>
   );
 }
@@ -207,7 +210,6 @@ function App() {
     <AuthProvider>
       <Router>
         <AppContent />
-        <Toaster position="top-center" />
       </Router>
     </AuthProvider>
   );

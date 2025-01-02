@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import DailyQuiz from '@/components/Funzone/DailyQuiz';
 import RewardsCenter from '@/components/Funzone/RewardsCenter';
 import Leaderboard from '@/components/Funzone/Leaderboard';

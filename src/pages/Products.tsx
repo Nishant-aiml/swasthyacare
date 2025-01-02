@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/Tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs"
 import { ShoppingBag, Star, Filter, Search, Tag, ArrowUpDown } from 'lucide-react';
 import { WOMEN_HYGIENE_PRODUCTS } from '../types/products';
 import { useAuth } from '../hooks/useAuth';
-
 
 interface Product {
   id: string;
@@ -86,6 +85,10 @@ export default function Products() {
     return (a.rating - b.rating) * order;
   });
 
+  const handleSortOrderClick = () => {
+    setSortOrder((prev: 'asc' | 'desc') => prev === 'asc' ? 'desc' : 'asc');
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
@@ -116,7 +119,7 @@ export default function Products() {
             ))}
           </select>
           <button
-            onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')}
+            onClick={handleSortOrderClick}
             className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50"
           >
             <ArrowUpDown className="h-5 w-5" />
@@ -197,7 +200,7 @@ export default function Products() {
             </div>
 
             <div className="space-y-4">
-              {selectedProduct.alternatives.map(alt => (
+              {selectedProduct.alternatives.map((alt: Alternative) => (
                 <div key={alt.id} className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
                     <h3 className="font-medium">{alt.name}</h3>
@@ -220,4 +223,4 @@ export default function Products() {
       )}
     </div>
   );
-} 
+}

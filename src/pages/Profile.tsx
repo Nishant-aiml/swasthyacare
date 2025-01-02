@@ -4,12 +4,14 @@ import MembershipPlans from '../components/Profile/MembershipPlans';
 import FamilyAccount from '../components/Profile/FamilyAccount';
 import HealthHistoryAnalysis from '../components/Profile/HealthHistoryAnalysis';
 import ProfileIDs from '../components/Profile/ProfileIDs';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/Tabs';
-import { FileText, Crown, Users, Activity, CreditCard } from 'lucide-react';
-import { useAuth } from '../hooks/useAuth';
+import HealthDashboard from '../components/Profile/HealthDashboard';
+import EmergencyHealthCard from '../components/Profile/EmergencyHealthCard';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs"
+import { FileText, Crown, Users, Activity, CreditCard, Layout, AlertCircle } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Profile() {
-  const [activeTab, setActiveTab] = useState('ids');
+  const [activeTab, setActiveTab] = useState('dashboard');
   const { user } = useAuth();
 
   return (
@@ -26,6 +28,30 @@ export default function Profile() {
       <div data-tabs-value={activeTab}>
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="flex flex-wrap justify-start sm:justify-center gap-2 mb-6 sm:mb-8 overflow-x-auto">
+            <TabsTrigger
+              value="dashboard"
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
+                activeTab === 'dashboard'
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-600 hover:bg-gray-100'
+              }`}
+            >
+              <Layout className="h-4 w-4" />
+              <span>Dashboard</span>
+            </TabsTrigger>
+
+            <TabsTrigger
+              value="emergency"
+              className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
+                activeTab === 'emergency'
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-600 hover:bg-gray-100'
+              }`}
+            >
+              <AlertCircle className="h-4 w-4" />
+              <span>Emergency Card</span>
+            </TabsTrigger>
+
             <TabsTrigger
               value="ids"
               className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm whitespace-nowrap ${
@@ -88,6 +114,18 @@ export default function Profile() {
           </TabsList>
 
           <div className="mt-4 sm:mt-6">
+            <TabsContent value="dashboard">
+              <div className="focus:outline-none">
+                <HealthDashboard />
+              </div>
+            </TabsContent>
+
+            <TabsContent value="emergency">
+              <div className="focus:outline-none">
+                <EmergencyHealthCard />
+              </div>
+            </TabsContent>
+
             <TabsContent value="ids">
               <div className="focus:outline-none">
                 <ProfileIDs />

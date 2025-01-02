@@ -121,140 +121,82 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Mobile menu button and notification */}
-            <div className="flex items-center gap-3 lg:hidden">
-              {isAuthenticated && (
-                <div className="flex items-center">
-                  <NotificationCenter />
-                </div>
-              )}
+            {/* Mobile menu button */}
+            <div className="lg:hidden flex items-center">
               <button
                 onClick={toggleMenu}
-                className="p-2 rounded-md text-purple-600 hover:text-purple-700 hover:bg-purple-50 focus:outline-none"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
               >
+                <span className="sr-only">Open main menu</span>
                 {isMenuOpen ? (
-                  <X className="h-6 w-6" />
+                  <X className="block h-6 w-6" />
                 ) : (
-                  <Menu className="h-6 w-6" />
+                  <Menu className="block h-6 w-6" />
                 )}
               </button>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Mobile menu */}
-      <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
-        <div className="absolute top-16 inset-x-0 bg-white shadow-lg border-b border-purple-100 z-50">
-          <div className="px-4 py-2 space-y-1">
-            {isAuthenticated ? (
-              <>
-                <Link
-                  to="/emergency"
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-red-700 hover:bg-red-50 hover:text-red-800 transition-colors"
-                  onClick={toggleMenu}
-                >
-                  <AlertCircle className="h-4 w-4" />
-                  Emergency
-                </Link>
-                <Link
-                  to="/medicines"
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-emerald-700 hover:bg-emerald-50 hover:text-emerald-800 transition-colors"
-                  onClick={toggleMenu}
-                >
-                  <Pill className="h-4 w-4" />
-                  Medicines
-                </Link>
-                <Link
-                  to="/resources"
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-indigo-700 hover:bg-indigo-50 hover:text-indigo-800 transition-colors"
-                  onClick={toggleMenu}
-                >
-                  <BookOpen className="h-4 w-4" />
-                  Resources
-                </Link>
-                <Link
-                  to="/funzone"
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-pink-700 hover:bg-pink-50 hover:text-pink-800 transition-colors"
-                  onClick={toggleMenu}
-                >
-                  <Sparkles className="h-4 w-4" />
-                  Funzone
-                </Link>
-                <Link
-                  to="/health-ai"
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-blue-700 hover:bg-blue-50 hover:text-blue-800 transition-colors"
-                  onClick={toggleMenu}
-                >
-                  <Brain className="h-4 w-4" />
-                  Health AI
-                </Link>
-                <Link
-                  to="/appointments"
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-purple-700 hover:bg-purple-50 hover:text-purple-800 transition-colors"
-                  onClick={toggleMenu}
-                >
-                  <Calendar className="h-4 w-4" />
-                  Appointments
-                </Link>
-                <Link
-                  to="/profile"
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-indigo-700 hover:bg-indigo-50 hover:text-indigo-800 transition-colors"
-                  onClick={toggleMenu}
-                >
-                  <User className="h-4 w-4" />
-                  Profile
-                </Link>
-                <div className="border-t border-gray-200 pt-4 pb-3">
-                  <button
-                    onClick={() => {
-                      toggleColorMode();
-                      toggleMenu();
-                    }}
-                    className="w-full px-4 py-2 text-left hover:bg-gray-50"
-                  >
-                    <div className="flex items-center">
-                      {colorMode === 'dark' ? (
-                        <>
-                          <Sun className="h-5 w-5 mr-3" />
-                          <span>Light Mode</span>
-                        </>
-                      ) : (
-                        <>
-                          <Moon className="h-5 w-5 mr-3" />
-                          <span>Dark Mode</span>
-                        </>
-                      )}
-                    </div>
-                  </button>
+            {/* Mobile menu, show/hide based on menu state */}
+            {isMenuOpen && (
+              <div className="lg:hidden absolute top-16 left-0 right-0 bg-white shadow-lg z-50">
+                <div className="px-2 pt-2 pb-3 space-y-1">
+                  {isAuthenticated ? (
+                    <>
+                      <Link
+                        to="/emergency"
+                        className="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-red-700 hover:bg-red-50 hover:text-red-800"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <AlertCircle className="h-5 w-5" />
+                        Emergency
+                      </Link>
+                      <Link
+                        to="/medicines"
+                        className="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-emerald-700 hover:bg-emerald-50 hover:text-emerald-800"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <Pill className="h-5 w-5" />
+                        Medicines
+                      </Link>
+                      <Link
+                        to="/mental-health"
+                        className="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-blue-700 hover:bg-blue-50 hover:text-blue-800"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <Brain className="h-5 w-5" />
+                        Mental Health
+                      </Link>
+                      <Link
+                        to="/appointments"
+                        className="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-purple-700 hover:bg-purple-50 hover:text-purple-800"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <Calendar className="h-5 w-5" />
+                        Appointments
+                      </Link>
+                      <button
+                        onClick={() => {
+                          logout();
+                          setIsMenuOpen(false);
+                        }}
+                        className="flex w-full items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                      >
+                        <User className="h-5 w-5" />
+                        Logout
+                      </button>
+                    </>
+                  ) : (
+                    <Link
+                      to="/login"
+                      className="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <User className="h-5 w-5" />
+                      Login
+                    </Link>
+                  )}
                 </div>
-                <button
-                  onClick={() => {
-                    logout();
-                    toggleMenu();
-                  }}
-                  className="w-full mt-2 px-4 py-3 rounded-lg text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-sm transition-all hover:shadow"
-                >
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <Link
-                  to="/login"
-                  className="block w-full px-4 py-3 rounded-lg text-sm font-medium text-purple-600 hover:text-purple-700 transition-colors hover:bg-purple-50"
-                  onClick={toggleMenu}
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/register"
-                  className="block w-full mt-2 px-4 py-3 rounded-lg text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-sm transition-all hover:shadow"
-                  onClick={toggleMenu}
-                >
-                  Register
-                </Link>
-              </>
+              </div>
             )}
           </div>
         </div>

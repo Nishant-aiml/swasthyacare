@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/Tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs"
 import SOSLocator from '../components/Emergency/SOSLocator';
 import EmergencyChatbot from '../components/Emergency/EmergencyChatbot';
 import InsuranceAssistance from '../components/Emergency/InsuranceAssistance';
