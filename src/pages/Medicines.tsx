@@ -323,72 +323,84 @@ export default function Medicines() {
           </TabsList>
 
           <div className="mt-4 sm:mt-6">
-            <TabsContent value="pharmacy" className="focus:outline-none">
-              {/* Search and Category Filter */}
-              <div className="mb-6 space-y-4">
-                <input
-                  type="text"
-                  placeholder="Search medicines, devices, and more..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                />
-                <div className="flex flex-wrap gap-2">
-                  {categories.map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setSelectedCategory(category)}
-                      className={`px-3 py-1.5 rounded-full text-xs sm:text-sm whitespace-nowrap transition-colors ${
-                        selectedCategory === category
-                          ? 'bg-emerald-600 text-white'
-                          : 'bg-white text-gray-600 hover:bg-gray-100'
-                      }`}
-                    >
-                      {category}
-                    </button>
+            <TabsContent value="pharmacy">
+              <div className="focus:outline-none">
+                {/* Search and Category Filter */}
+                <div className="mb-6 space-y-4">
+                  <input
+                    type="text"
+                    placeholder="Search medicines, devices, and more..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  />
+                  <div className="flex flex-wrap gap-2">
+                    {categories.map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => setSelectedCategory(category)}
+                        className={`px-3 py-1.5 rounded-full text-xs sm:text-sm whitespace-nowrap transition-colors ${
+                          selectedCategory === category
+                            ? 'bg-emerald-600 text-white'
+                            : 'bg-white text-gray-600 hover:bg-gray-100'
+                        }`}
+                      >
+                        {category}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Products Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {filteredProducts.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      onAddToCart={addToCart}
+                    />
                   ))}
                 </div>
+
+                {/* Cart */}
+                <Cart
+                  items={cartItems}
+                  total={cartTotal}
+                  onUpdateQuantity={updateQuantity}
+                  onClose={() => setShowCart(false)}
+                  show={showCart}
+                />
               </div>
+            </TabsContent>
 
-              {/* Products Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {filteredProducts.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    onAddToCart={addToCart}
-                  />
-                ))}
+            <TabsContent value="prescriptions">
+              <div className="focus:outline-none">
+                <EPrescriptions />
               </div>
-
-              {/* Cart */}
-              <Cart
-                items={cartItems}
-                total={cartTotal}
-                onUpdateQuantity={updateQuantity}
-                onClose={() => setShowCart(false)}
-                show={showCart}
-              />
             </TabsContent>
 
-            <TabsContent value="prescriptions" className="focus:outline-none">
-              <EPrescriptions />
+            <TabsContent value="reminders">
+              <div className="focus:outline-none">
+                <MedicineReminder />
+              </div>
             </TabsContent>
 
-            <TabsContent value="reminders" className="focus:outline-none">
-              <MedicineReminder />
+            <TabsContent value="offers">
+              <div className="focus:outline-none">
+                <DiscountOffers />
+              </div>
             </TabsContent>
 
-            <TabsContent value="offers" className="focus:outline-none">
-              <DiscountOffers />
+            <TabsContent value="subscription">
+              <div className="focus:outline-none">
+                <SubscriptionService />
+              </div>
             </TabsContent>
 
-            <TabsContent value="subscription" className="focus:outline-none">
-              <SubscriptionService />
-            </TabsContent>
-
-            <TabsContent value="alternatives" className="focus:outline-none">
-              <AlternativeMedicineFinder />
+            <TabsContent value="alternatives">
+              <div className="focus:outline-none">
+                <AlternativeMedicineFinder />
+              </div>
             </TabsContent>
           </div>
         </Tabs>

@@ -2,80 +2,7 @@ import React, { useState } from 'react';
 import Cart from './Cart';
 import { Button } from '@/components/ui/Button';
 import { Search } from 'lucide-react';
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  category: string;
-  description: string;
-  inStock: boolean;
-  prescriptionRequired?: boolean;
-}
-
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
-
-const products: Product[] = [
-  {
-    id: '1',
-    name: 'Paracetamol 500mg',
-    price: 50,
-    image: '/images/paracetamol.jpg',
-    category: 'Medicines',
-    description: 'Pain relief and fever reduction tablets',
-    inStock: true
-  },
-  {
-    id: '2',
-    name: 'Digital Thermometer',
-    price: 299,
-    image: '/images/thermometer.jpg',
-    category: 'Medical Equipment',
-    description: 'Accurate digital temperature measurement',
-    inStock: true
-  },
-  {
-    id: '3',
-    name: 'Whisper Ultra Soft',
-    price: 199,
-    image: '/images/pads.jpg',
-    category: 'Feminine Hygiene',
-    description: 'Pack of 20 sanitary pads',
-    inStock: true
-  },
-  {
-    id: '4',
-    name: 'First Aid Kit',
-    price: 599,
-    image: '/images/firstaid.jpg',
-    category: 'First Aid',
-    description: 'Complete emergency medical kit',
-    inStock: true
-  },
-  {
-    id: '5',
-    name: 'Insulin Syringes',
-    price: 150,
-    image: '/images/syringes.jpg',
-    category: 'Medical Equipment',
-    description: 'Sterile insulin syringes',
-    inStock: true,
-    prescriptionRequired: true
-  },
-  {
-    id: '6',
-    name: 'Vitamin D3 Supplements',
-    price: 399,
-    image: '/images/vitamind.jpg',
-    category: 'Health Supplements',
-    description: '60 tablets of Vitamin D3',
-    inStock: true
-  }
-];
+import { Product } from '@/types/Product';
 
 const categories = [
   'All Products',
@@ -87,8 +14,83 @@ const categories = [
   'Health Supplements'
 ];
 
+const products: Product[] = [
+  {
+    id: '1',
+    name: 'Paracetamol 500mg',
+    category: 'Medicines',
+    price: 50,
+    image: '/images/paracetamol.jpg',
+    description: 'Pain relief and fever reduction tablets',
+    inStock: true,
+    prescription: false,
+    rating: 4.5,
+    reviews: 128
+  },
+  {
+    id: '2',
+    name: 'Digital Thermometer',
+    category: 'Medical Equipment',
+    price: 299,
+    image: '/images/thermometer.jpg',
+    description: 'Accurate digital temperature measurement',
+    inStock: true,
+    prescription: false,
+    rating: 4.3,
+    reviews: 89
+  },
+  {
+    id: '3',
+    name: 'Whisper Ultra Soft',
+    category: 'Feminine Hygiene',
+    price: 199,
+    image: '/images/pads.jpg',
+    description: 'Pack of 20 sanitary pads',
+    inStock: true,
+    prescription: false,
+    rating: 4.7,
+    reviews: 543
+  },
+  {
+    id: '4',
+    name: 'First Aid Kit',
+    category: 'First Aid',
+    price: 599,
+    image: '/images/firstaid.jpg',
+    description: 'Complete emergency medical kit',
+    inStock: true,
+    prescription: false,
+    rating: 4.6,
+    reviews: 234
+  },
+  {
+    id: '5',
+    name: 'Insulin Syringes',
+    category: 'Medical Equipment',
+    price: 150,
+    image: '/images/syringes.jpg',
+    description: 'Sterile insulin syringes',
+    inStock: true,
+    prescription: true,
+    rating: 4.4,
+    reviews: 167
+  },
+  {
+    id: '6',
+    name: 'Vitamin D3 Supplements',
+    category: 'Health Supplements',
+    price: 399,
+    image: '/images/vitamind.jpg',
+    description: '60 tablets of Vitamin D3',
+    inStock: true,
+    prescription: false,
+    rating: 4.8,
+    reviews: 432
+  }
+];
+
 export default function PharmacyPage() {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useState<{ product: Product; quantity: number }[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('All Products');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -147,8 +149,16 @@ export default function PharmacyPage() {
               </div>
               <Cart
                 items={cartItems}
-                onUpdateQuantity={updateQuantity}
-                onRemoveItem={removeFromCart}
+                onUpdateQuantity={(productId, quantity) => {
+                  if (quantity === 0) {
+                    removeFromCart(productId);
+                  } else {
+                    updateQuantity(productId, quantity - (cartItems.find(item => item.product.id === productId)?.quantity || 0));
+                  }
+                }}
+                onClose={() => {}} // Add proper close handler if needed
+                show={true}
+                total={cartItems.reduce((sum, item) => sum + item.product.price * item.quantity, 0)}
               />
             </div>
           </div>
@@ -187,7 +197,7 @@ export default function PharmacyPage() {
                     <h3 className="text-lg font-semibold">{product.name}</h3>
                     <p className="text-gray-600">₹{product.price}</p>
                   </div>
-                  {product.prescriptionRequired && (
+                  {product.prescription && (
                     <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
                       Prescription Required
                     </span>

@@ -7,7 +7,8 @@ import {
   User,
   Brain,
   Menu,
-  X
+  X,
+  BookOpen
 } from 'lucide-react';
 
 export default function Navbar() {
@@ -17,7 +18,8 @@ export default function Navbar() {
   const navigation = [
     { name: 'Dashboard', href: '/', icon: Home },
     { name: 'Emergency', href: '/emergency', icon: AlertCircle },
-    { name: 'Products & Medicines', href: '/products', icon: ShoppingBag },
+    { name: 'Products & Medicines', href: '/medicines', icon: ShoppingBag },
+    { name: 'Resources', href: '/resources', icon: BookOpen },
     { name: 'Health AI', href: '/health-ai', icon: Brain },
     { name: 'Profile', href: '/profile', icon: User },
   ];

@@ -2,17 +2,7 @@ import React from 'react';
 import { Card, CardContent } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  price: number;
-  image: string;
-  description: string;
-  inStock: boolean;
-  prescription: boolean;
-}
+import { Product } from '@/types/Product';
 
 interface ProductCardProps {
   product: Product;

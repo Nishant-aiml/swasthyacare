@@ -1,6 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import { Toaster } from 'sonner';
 import Navbar from './components/Navbar';
@@ -14,7 +13,12 @@ import EmergencyChat from './components/Emergency/EmergencyChat';
 import AppointmentPage from './pages/appointments';
 import Medicines from './pages/Medicines';
 import HealthAI from './pages/HealthAI';
+import Resources from './pages/Resources';
+import Funzone from './pages/Funzone';
 import { AuthProvider } from './context/AuthContext';
+import { DailyHealthTrivia } from '@/components/Games/DailyHealthTrivia';
+import { RapidFireQuiz } from '@/components/Games/RapidFireQuiz';
+import { WellnessWheel } from '@/components/Games/WellnessWheel';
 
 // Protected Route wrapper component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -26,7 +30,6 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <Navbar />
       {children}
     </>
   );
@@ -118,6 +121,50 @@ function AppRoutes() {
         }
       />
 
+      <Route
+        path="/resources"
+        element={
+          <ProtectedRoute>
+            <Resources />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/funzone"
+        element={
+          <ProtectedRoute>
+            <Funzone />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Game Routes */}
+      <Route 
+        path="/games/daily-trivia" 
+        element={
+          <ProtectedRoute>
+            <DailyHealthTrivia />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/games/rapid-fire" 
+        element={
+          <ProtectedRoute>
+            <RapidFireQuiz />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/games/spin-wheel" 
+        element={
+          <ProtectedRoute>
+            <WellnessWheel />
+          </ProtectedRoute>
+        } 
+      />
+
       {/* Catch all route - redirect to login if not authenticated, otherwise to dashboard */}
       <Route 
         path="*" 
@@ -131,15 +178,36 @@ function AppRoutes() {
   );
 }
 
+function AppContent() {
+  const location = useLocation();
+  const { isAuthenticated } = useAuth();
+  const hideNavbarPaths = ['/login', '/register'];
+  const shouldShowNavbar = !hideNavbarPaths.includes(location.pathname);
+
+  useEffect(() => {
+    const token = localStorage.getItem('auth_token');
+    if (!token && !hideNavbarPaths.includes(location.pathname)) {
+      window.location.href = '/login';
+    }
+  }, [location]);
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      {shouldShowNavbar && isAuthenticated && <Navbar />}
+      <main className="flex-grow">
+        <AppRoutes />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen bg-gray-100">
-          <AppRoutes />
-          <Footer />
-          <Toaster richColors position="top-center" />
-        </div>
+        <AppContent />
+        <Toaster position="top-center" />
       </Router>
     </AuthProvider>
   );

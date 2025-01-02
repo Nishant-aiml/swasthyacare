@@ -11,17 +11,7 @@ import {
 import { Button } from "@/components/ui/Button";
 import { ShoppingCart, Minus, Plus, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  category: string;
-  description: string;
-  inStock: boolean;
-  prescriptionRequired?: boolean;
-}
+import { Product } from '@/types/Product';
 
 interface CartItem {
   product: Product;
@@ -30,13 +20,13 @@ interface CartItem {
 
 interface CartProps {
   items: CartItem[];
-  onUpdateQuantity: (productId: string, change: number) => void;
-  onRemoveItem: (productId: string) => void;
+  onUpdateQuantity: (productId: string, quantity: number) => void;
+  onClose: () => void;
+  show: boolean;
+  total: number;
 }
 
-const Cart: React.FC<CartProps> = ({ items = [], onUpdateQuantity, onRemoveItem }) => {
-  const total = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-
+const Cart: React.FC<CartProps> = ({ items = [], onUpdateQuantity, onClose, show, total }) => {
   const handleCheckout = () => {
     if (items.length === 0) {
       toast.error("Your cart is empty");
@@ -65,20 +55,20 @@ const Cart: React.FC<CartProps> = ({ items = [], onUpdateQuantity, onRemoveItem 
                 </div>
                 <div className="flex items-center">
                   <button
-                    onClick={() => onUpdateQuantity(item.product.id, -1)}
+                    onClick={() => onUpdateQuantity(item.product.id, item.quantity - 1)}
                     className="text-gray-500 hover:text-gray-700"
                   >
                     <Minus className="h-4 w-4" />
                   </button>
                   <span className="mx-2">{item.quantity}</span>
                   <button
-                    onClick={() => onUpdateQuantity(item.product.id, 1)}
+                    onClick={() => onUpdateQuantity(item.product.id, item.quantity + 1)}
                     className="text-gray-500 hover:text-gray-700"
                   >
                     <Plus className="h-4 w-4" />
                   </button>
                   <button
-                    onClick={() => onRemoveItem(item.product.id)}
+                    onClick={() => onUpdateQuantity(item.product.id, 0)}
                     className="text-red-500 hover:text-red-700 ml-4"
                   >
                     <Trash2 className="h-4 w-4" />

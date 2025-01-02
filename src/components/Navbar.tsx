@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Brain, Pill, AlertCircle, Calendar, User, Menu, X } from 'lucide-react';
+import { Brain, Pill, AlertCircle, Calendar, User, Menu, X, BookOpen, Sparkles, Sun, Moon } from 'lucide-react';
+import { useColorMode } from '../hooks/useColorMode';
 import NotificationCenter from './Notifications/NotificationCenter';
 
 export default function Navbar() {
   const { isAuthenticated, logout } = useAuth();
+  const { colorMode, toggleColorMode } = useColorMode();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -46,6 +48,20 @@ export default function Navbar() {
                     Medicines
                   </Link>
                   <Link
+                    to="/resources"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-indigo-700 hover:bg-indigo-50 hover:text-indigo-800 transition-colors"
+                  >
+                    <BookOpen className="h-4 w-4" />
+                    Resources
+                  </Link>
+                  <Link
+                    to="/funzone"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-pink-700 hover:bg-pink-50 hover:text-pink-800 transition-colors"
+                  >
+                    <Sparkles className="h-4 w-4" />
+                    Funzone
+                  </Link>
+                  <Link
                     to="/health-ai"
                     className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-blue-700 hover:bg-blue-50 hover:text-blue-800 transition-colors"
                   >
@@ -69,6 +85,17 @@ export default function Navbar() {
                   <div className="ml-2">
                     <NotificationCenter />
                   </div>
+                  <button
+                    onClick={toggleColorMode}
+                    className="p-2 rounded-full hover:bg-white/10 transition-colors"
+                    aria-label="Toggle theme"
+                  >
+                    {colorMode === 'dark' ? (
+                      <Sun className="h-5 w-5" />
+                    ) : (
+                      <Moon className="h-5 w-5" />
+                    )}
+                  </button>
                   <button
                     onClick={logout}
                     className="ml-4 px-4 py-2 rounded-lg text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-sm transition-all hover:shadow"
@@ -139,6 +166,22 @@ export default function Navbar() {
                   Medicines
                 </Link>
                 <Link
+                  to="/resources"
+                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-indigo-700 hover:bg-indigo-50 hover:text-indigo-800 transition-colors"
+                  onClick={toggleMenu}
+                >
+                  <BookOpen className="h-4 w-4" />
+                  Resources
+                </Link>
+                <Link
+                  to="/funzone"
+                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-pink-700 hover:bg-pink-50 hover:text-pink-800 transition-colors"
+                  onClick={toggleMenu}
+                >
+                  <Sparkles className="h-4 w-4" />
+                  Funzone
+                </Link>
+                <Link
                   to="/health-ai"
                   className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-blue-700 hover:bg-blue-50 hover:text-blue-800 transition-colors"
                   onClick={toggleMenu}
@@ -162,6 +205,29 @@ export default function Navbar() {
                   <User className="h-4 w-4" />
                   Profile
                 </Link>
+                <div className="border-t border-gray-200 pt-4 pb-3">
+                  <button
+                    onClick={() => {
+                      toggleColorMode();
+                      toggleMenu();
+                    }}
+                    className="w-full px-4 py-2 text-left hover:bg-gray-50"
+                  >
+                    <div className="flex items-center">
+                      {colorMode === 'dark' ? (
+                        <>
+                          <Sun className="h-5 w-5 mr-3" />
+                          <span>Light Mode</span>
+                        </>
+                      ) : (
+                        <>
+                          <Moon className="h-5 w-5 mr-3" />
+                          <span>Dark Mode</span>
+                        </>
+                      )}
+                    </div>
+                  </button>
+                </div>
                 <button
                   onClick={() => {
                     logout();

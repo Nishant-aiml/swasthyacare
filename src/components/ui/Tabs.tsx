@@ -4,6 +4,7 @@ interface TabsProps {
   value: string;
   onValueChange: (value: string) => void;
   children: React.ReactNode;
+  className?: string;
 }
 
 interface TabsListProps {
@@ -21,6 +22,7 @@ interface TabsTriggerProps {
 interface TabsContentProps {
   value: string;
   children: React.ReactNode;
+  className?: string;
 }
 
 interface TabContextValue {
@@ -30,19 +32,17 @@ interface TabContextValue {
 
 const TabContext = React.createContext<TabContextValue | undefined>(undefined);
 
-export function Tabs({ value, onValueChange, children }: TabsProps) {
+export function Tabs({ value, onValueChange, children, className = '' }: TabsProps) {
   return (
     <TabContext.Provider value={{ value, onValueChange }}>
-      <div className="w-full" data-tabs-value={value}>
-        {children}
-      </div>
+      <div className={className}>{children}</div>
     </TabContext.Provider>
   );
 }
 
 export function TabsList({ children, className = '' }: TabsListProps) {
   return (
-    <div className={`flex ${className}`}>
+    <div className={`inline-flex rounded-lg bg-gray-100 dark:bg-gray-800 p-1 ${className}`}>
       {children}
     </div>
   );
@@ -54,42 +54,42 @@ export function TabsTrigger({ value, children, className = '', onClick }: TabsTr
     throw new Error('TabsTrigger must be used within a Tabs component');
   }
 
-  const handleClick = () => {
-    if (onClick) {
-      onClick();
-    }
-    context.onValueChange(value);
-  };
+  const { value: selectedValue, onValueChange } = context;
+  const isSelected = value === selectedValue;
 
   return (
     <button
-      className={className}
-      onClick={handleClick}
-      role="tab"
-      aria-selected={context.value === value}
-      data-state={context.value === value ? 'active' : 'inactive'}
+      className={`px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
+        isSelected
+          ? 'bg-white dark:bg-gray-700 text-primary-600 dark:text-primary-400 shadow-sm'
+          : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100'
+      } ${className}`}
+      onClick={() => {
+        onValueChange(value);
+        onClick?.();
+      }}
     >
       {children}
     </button>
   );
 }
 
-export function TabsContent({ value, children }: TabsContentProps) {
+export function TabsContent({ value, children, className = '' }: TabsContentProps) {
   const context = React.useContext(TabContext);
   if (!context) {
     throw new Error('TabsContent must be used within a Tabs component');
   }
 
-  if (context.value !== value) {
+  const { value: selectedValue } = context;
+  const isSelected = value === selectedValue;
+
+  if (!isSelected) {
     return null;
   }
 
   return (
-    <div
-      role="tabpanel"
-      data-state={context.value === value ? 'active' : 'inactive'}
-    >
+    <div className={`focus:outline-none ${className}`} tabIndex={0}>
       {children}
     </div>
   );
-} 
+}

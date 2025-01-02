@@ -6,17 +6,7 @@ import { toast } from 'sonner';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Tag, Truck, Clock, Shield } from 'lucide-react';
-
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  price: number;
-  image: string;
-  description: string;
-  inStock: boolean;
-  prescription: boolean;
-}
+import { Product } from '@/types/Product';
 
 const categories = [
   "Medicines",
@@ -37,7 +27,9 @@ const products: Product[] = [
     image: "/images/pharmacy/paracetamol.jpg",
     description: "Pain relief and fever reduction tablets",
     inStock: true,
-    prescription: false
+    prescription: false,
+    rating: 4.5,
+    reviews: 128
   },
   {
     id: "2",
@@ -47,7 +39,9 @@ const products: Product[] = [
     image: "/images/pharmacy/thermometer.jpg",
     description: "Accurate digital temperature measurement",
     inStock: true,
-    prescription: false
+    prescription: false,
+    rating: 4.3,
+    reviews: 89
   },
   {
     id: "3",
@@ -57,7 +51,9 @@ const products: Product[] = [
     image: "/images/pharmacy/pads.jpg",
     description: "Pack of 20 sanitary pads",
     inStock: true,
-    prescription: false
+    prescription: false,
+    rating: 4.7,
+    reviews: 543
   },
   {
     id: "4",
@@ -67,7 +63,9 @@ const products: Product[] = [
     image: "/images/pharmacy/firstaid.jpg",
     description: "Complete emergency medical kit",
     inStock: true,
-    prescription: false
+    prescription: false,
+    rating: 4.6,
+    reviews: 234
   },
   {
     id: "5",
@@ -77,7 +75,9 @@ const products: Product[] = [
     image: "/images/pharmacy/syringe.jpg",
     description: "Pack of 10 sterile syringes",
     inStock: true,
-    prescription: true
+    prescription: true,
+    rating: 4.4,
+    reviews: 167
   },
   {
     id: "6",
@@ -87,7 +87,9 @@ const products: Product[] = [
     image: "/images/pharmacy/vitamind.jpg",
     description: "60 tablets bottle",
     inStock: true,
-    prescription: false
+    prescription: false,
+    rating: 4.8,
+    reviews: 432
   },
   // Add more products as needed
 ];
@@ -149,8 +151,16 @@ const PharmacyPage = () => {
             <h1 className="text-2xl font-bold text-gray-900">HealthCare Pharmacy</h1>
             <Cart
               items={cart}
-              onUpdateQuantity={updateCartQuantity}
-              onRemoveItem={removeFromCart}
+              onUpdateQuantity={(productId, quantity) => {
+                if (quantity === 0) {
+                  removeFromCart(productId);
+                } else {
+                  updateCartQuantity(productId, quantity - (cart.find(item => item.product.id === productId)?.quantity || 0));
+                }
+              }}
+              onClose={() => {}} // Add proper close handler if needed
+              show={true}
+              total={cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0)}
             />
           </div>
         </div>

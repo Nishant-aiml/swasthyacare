@@ -72,7 +72,32 @@ const Dashboard: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Left Section */}
+            {/* Map Section (Previously Right Section) */}
+            <div className="space-y-8">
+              {/* Location Map */}
+              <div className="bg-white rounded-lg shadow-sm p-6 border border-orange-100">
+                <h2 className="text-xl font-semibold text-orange-600 mb-4">Emergency Services Near You</h2>
+                <EmergencyServicesMap />
+              </div>
+
+              {/* Recent Activity */}
+              <div className="bg-white rounded-lg shadow-sm p-6 border border-orange-100">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-lg font-semibold text-orange-600">Recent Activity</h2>
+                  <Activity className="h-5 w-5 text-orange-500" />
+                </div>
+                <div className="space-y-4">
+                  {recentActivities.map((activity, index) => (
+                    <div key={index} className="flex items-center justify-between">
+                      <span className="text-gray-600">{activity.text}</span>
+                      <span className="text-sm text-gray-400">{activity.time}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Content Section (Previously Left Section) */}
             <div className="space-y-8">
               {/* Emergency Services */}
               <EmergencyServices />
@@ -113,31 +138,6 @@ const Dashboard: React.FC = () => {
                   color="bg-orange-600"
                   bgColor="bg-orange-50"
                 />
-              </div>
-            </div>
-
-            {/* Right Section */}
-            <div className="space-y-8">
-              {/* Location Map */}
-              <div className="bg-white rounded-lg shadow-sm p-6 border border-orange-100">
-                <h2 className="text-xl font-semibold text-orange-600 mb-4">Emergency Services Near You</h2>
-                <EmergencyServicesMap />
-              </div>
-
-              {/* Recent Activity */}
-              <div className="bg-white rounded-lg shadow-sm p-6 border border-orange-100">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-lg font-semibold text-orange-600">Recent Activity</h2>
-                  <Activity className="h-5 w-5 text-orange-500" />
-                </div>
-                <div className="space-y-4">
-                  {recentActivities.map((activity, index) => (
-                    <div key={index} className="flex items-center justify-between">
-                      <span className="text-gray-600">{activity.text}</span>
-                      <span className="text-sm text-gray-400">{activity.time}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </div>

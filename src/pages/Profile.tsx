@@ -88,24 +88,34 @@ export default function Profile() {
           </TabsList>
 
           <div className="mt-4 sm:mt-6">
-            <TabsContent value="ids" className="focus:outline-none">
-              <ProfileIDs />
+            <TabsContent value="ids">
+              <div className="focus:outline-none">
+                <ProfileIDs />
+              </div>
             </TabsContent>
 
-            <TabsContent value="records" className="focus:outline-none">
-              <HealthRecordsVault />
+            <TabsContent value="records">
+              <div className="focus:outline-none">
+                <HealthRecordsVault />
+              </div>
             </TabsContent>
 
-            <TabsContent value="membership" className="focus:outline-none">
-              <MembershipPlans />
+            <TabsContent value="membership">
+              <div className="focus:outline-none">
+                <MembershipPlans />
+              </div>
             </TabsContent>
 
-            <TabsContent value="family" className="focus:outline-none">
-              <FamilyAccount />
+            <TabsContent value="family">
+              <div className="focus:outline-none">
+                <FamilyAccount />
+              </div>
             </TabsContent>
 
-            <TabsContent value="history" className="focus:outline-none">
-              <HealthHistoryAnalysis />
+            <TabsContent value="history">
+              <div className="focus:outline-none">
+                <HealthHistoryAnalysis />
+              </div>
             </TabsContent>
           </div>
         </Tabs>
