@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Progress } from '@/components/ui/Progress';
@@ -27,7 +27,7 @@ export function HealthyFoodCatch() {
   const [basketPosition, setBasketPosition] = useState(50);
   const [foods, setFoods] = useState<FoodItem[]>([]);
   const gameAreaRef = useRef<HTMLDivElement>(null);
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number | null>(null);
   const lastSpawnRef = useRef(0);
 
   const initializeGame = () => {
@@ -37,7 +37,7 @@ export function HealthyFoodCatch() {
     setLives(3);
     setTimeLeft(60);
     setFoods([]);
-    lastSpawnRef.current = 0;
+    lastSpawnRef.current = performance.now();
   };
 
   useEffect(() => {
@@ -74,8 +74,8 @@ export function HealthyFoodCatch() {
     };
   }, [gameStarted, gameOver]);
 
-  const spawnFood = (timestamp: number) => {
-    if (timestamp - lastSpawnRef.current >= 1000) { // Spawn every second
+  const spawnFood = useCallback((timestamp: number) => {
+    if (timestamp - lastSpawnRef.current >= 1000) {
       const isHealthy = Math.random() > 0.4;
       const emoji = isHealthy
         ? healthyFoods[Math.floor(Math.random() * healthyFoods.length)]
@@ -92,9 +92,9 @@ export function HealthyFoodCatch() {
 
       lastSpawnRef.current = timestamp;
     }
-  };
+  }, []);
 
-  const updateFoods = () => {
+  const updateFoods = useCallback(() => {
     setFoods((prev) => {
       const newFoods = prev.map((food) => ({
         ...food,
@@ -113,7 +113,6 @@ export function HealthyFoodCatch() {
           return false;
         }
 
-        // Check collision with basket
         if (food.y > 80 && food.y < 90) {
           const basketLeft = basketPosition - 10;
           const basketRight = basketPosition + 10;
@@ -138,26 +137,40 @@ export function HealthyFoodCatch() {
       });
       return newFoods;
     });
-  };
+  }, [basketPosition]);
 
-  const animate = (timestamp: number) => {
+  const animate = useCallback((timestamp: number) => {
     if (gameStarted && !gameOver) {
       spawnFood(timestamp);
       updateFoods();
       requestRef.current = requestAnimationFrame(animate);
     }
-  };
+  }, [gameStarted, gameOver, spawnFood, updateFoods]);
+
+  const startAnimation = useCallback((timestamp: number) => {
+    animate(timestamp);
+  }, [animate]);
 
   useEffect(() => {
     if (gameStarted && !gameOver) {
-      requestRef.current = requestAnimationFrame(animate);
+      requestRef.current = requestAnimationFrame(startAnimation);
     }
     return () => {
       if (requestRef.current) {
         cancelAnimationFrame(requestRef.current);
       }
     };
-  }, [gameStarted, gameOver]);
+  }, [gameStarted, gameOver, startAnimation]);
+
+  const handleStartGame = () => {
+    initializeGame();
+    requestRef.current = requestAnimationFrame(startAnimation);
+  };
+
+  const handlePlayAgain = () => {
+    initializeGame();
+    requestRef.current = requestAnimationFrame(startAnimation);
+  };
 
   if (!gameStarted) {
     return (
@@ -165,7 +178,7 @@ export function HealthyFoodCatch() {
         <Card className="p-6 text-center">
           <h2 className="text-2xl font-bold mb-4">Healthy Food Catch</h2>
           <p className="text-gray-600 mb-6">Catch healthy foods and avoid junk food!</p>
-          <Button onClick={initializeGame} className="bg-green-500 hover:bg-green-600">
+          <Button onClick={handleStartGame} className="bg-green-500 hover:bg-green-600">
             Start Game
           </Button>
         </Card>
@@ -233,7 +246,7 @@ export function HealthyFoodCatch() {
             <p className="text-gray-600 mb-4">
               Final Score: {score} points
             </p>
-            <Button onClick={initializeGame} className="bg-green-500 hover:bg-green-600">
+            <Button onClick={handlePlayAgain} className="bg-green-500 hover:bg-green-600">
               Play Again
             </Button>
           </div>

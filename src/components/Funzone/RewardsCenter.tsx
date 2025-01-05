@@ -145,3 +145,4 @@ export default function RewardsCenter({ onClaim }: RewardsCenterProps) {
     </div>
   );
 }
+

@@ -185,3 +185,4 @@ export default function Challenges({ onComplete }: ChallengesProps) {
     </div>
   );
 }
+

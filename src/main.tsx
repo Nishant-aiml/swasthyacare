@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,10 +10,10 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { AuthProvider } from './context/AuthContext';
-import App from './App.tsx';
-import './index.css';
+} from 'chart.js'
+import { AuthProvider } from './context/AuthContext'
+import App from './App.tsx'
+import './index.css'
 
 ChartJS.register(
   CategoryScale,
@@ -23,7 +23,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-);
+)
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,7 +32,7 @@ const queryClient = new QueryClient({
       retry: false,
     },
   },
-});
+})
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -41,5 +41,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <App />
       </AuthProvider>
     </QueryClientProvider>
-  </React.StrictMode>,
-);
+  </React.StrictMode>
+)

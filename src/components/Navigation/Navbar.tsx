@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   Home,
   AlertCircle,
@@ -8,12 +8,21 @@ import {
   Brain,
   Menu,
   X,
-  BookOpen
+  BookOpen,
+  LogOut
 } from 'lucide-react';
+import { useAuth } from '../../lib/auth';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   const navigation = [
     { name: 'Dashboard', href: '/', icon: Home },
@@ -56,6 +65,14 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            {/* Logout Button */}
+            <button
+              onClick={handleLogout}
+              className="text-orange-100 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center space-x-2 transition-colors"
+            >
+              <LogOut className="h-5 w-5" />
+              <span>Logout</span>
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -97,6 +114,17 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            {/* Mobile Logout Button */}
+            <button
+              onClick={() => {
+                handleLogout();
+                setIsOpen(false);
+              }}
+              className="w-full text-orange-100 hover:bg-orange-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium flex items-center space-x-2 transition-colors"
+            >
+              <LogOut className="h-5 w-5" />
+              <span>Logout</span>
+            </button>
           </div>
         </div>
       )}

@@ -185,3 +185,4 @@ export default function SpinWheel({ onComplete, onClose }: SpinWheelProps) {
     </div>
   );
 }
+

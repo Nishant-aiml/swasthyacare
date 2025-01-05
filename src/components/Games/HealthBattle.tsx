@@ -1,240 +1,189 @@
-import React, { useState, useEffect } from 'react';
-import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
-import { Progress } from '@/components/ui/Progress';
-import { Timer, Trophy, Users, Brain, Swords } from 'lucide-react';
-import { toast } from 'sonner';
-import { motion } from 'framer-motion';
-import { Avatar } from '@/components/ui/Avatar';
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
+import { Progress } from "@/components/ui/Progress";
+import { Trophy, Heart, Shield } from 'lucide-react';
 
-interface Question {
-  id: string;
-  question: string;
-  options: string[];
-  correctAnswer: string;
-  points: number;
-}
-
-const mockQuestions: Question[] = [
-  {
-    id: '1',
-    question: 'Which of these foods is highest in protein?',
-    options: ['Chicken Breast', 'White Rice', 'Apple', 'Lettuce'],
-    correctAnswer: 'Chicken Breast',
-    points: 20
-  },
-  {
-    id: '2',
-    question: 'What is the recommended duration of daily exercise?',
-    options: ['15 minutes', '30 minutes', '45 minutes', '60 minutes'],
-    correctAnswer: '30 minutes',
-    points: 20
-  },
-  {
-    id: '3',
-    question: 'Which vitamin helps in blood clotting?',
-    options: ['Vitamin A', 'Vitamin K', 'Vitamin C', 'Vitamin D'],
-    correctAnswer: 'Vitamin K',
-    points: 20
-  },
-  // Add more questions as needed
-];
-
-interface Player {
+interface Character {
   id: string;
   name: string;
-  avatar: string;
-  score: number;
-  answered: boolean;
+  health: number;
+  maxHealth: number;
+  attack: number;
+  defense: number;
+  image: string;
 }
 
-export function HealthBattle() {
-  const [gameStarted, setGameStarted] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(15);
-  const [players, setPlayers] = useState<Player[]>([
-    {
-      id: '1',
-      name: 'You',
-      avatar: '👤',
-      score: 0,
-      answered: false
-    },
-    {
-      id: '2',
-      name: 'AI Player 1',
-      avatar: '🤖',
-      score: 0,
-      answered: false
-    },
-    {
-      id: '3',
-      name: 'AI Player 2',
-      avatar: '🤖',
-      score: 0,
-      answered: false
-    }
-  ]);
+interface BattleAction {
+  type: 'attack' | 'heal' | 'defend';
+  value: number;
+}
 
-  useEffect(() => {
-    if (gameStarted && !gameOver && timeLeft > 0) {
-      const timer = setInterval(() => {
-        setTimeLeft((prev) => {
-          if (prev <= 1) {
-            handleTimeUp();
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-      return () => clearInterval(timer);
-    }
-  }, [gameStarted, gameOver, timeLeft]);
-
-  const initializeGame = () => {
-    setGameStarted(true);
-    setGameOver(false);
-    setCurrentQuestion(0);
-    setTimeLeft(15);
-    setPlayers(players.map(player => ({ ...player, score: 0, answered: false })));
-  };
-
-  const handleTimeUp = () => {
-    // Simulate AI players answering
-    const correctAnswer = mockQuestions[currentQuestion].correctAnswer;
-    const updatedPlayers = players.map(player => {
-      if (player.id !== '1' && !player.answered) {
-        const isCorrect = Math.random() > 0.5;
-        return {
-          ...player,
-          score: isCorrect ? player.score + mockQuestions[currentQuestion].points : player.score,
-          answered: true
-        };
-      }
-      return player;
-    });
-    setPlayers(updatedPlayers);
-    moveToNextQuestion();
-  };
-
-  const handleAnswer = (answer: string) => {
-    const correctAnswer = mockQuestions[currentQuestion].correctAnswer;
-    const isCorrect = answer === correctAnswer;
-    
-    // Update player score
-    const updatedPlayers = players.map(player => {
-      if (player.id === '1') {
-        return {
-          ...player,
-          score: isCorrect ? player.score + mockQuestions[currentQuestion].points : player.score,
-          answered: true
-        };
-      }
-      return player;
-    });
-    setPlayers(updatedPlayers);
-
-    if (isCorrect) {
-      toast.success('Correct answer! +20 points');
-    } else {
-      toast.error('Wrong answer!');
-    }
-
-    moveToNextQuestion();
-  };
-
-  const moveToNextQuestion = () => {
-    if (currentQuestion < mockQuestions.length - 1) {
-      setCurrentQuestion(prev => prev + 1);
-      setTimeLeft(15);
-      setPlayers(players.map(player => ({ ...player, answered: false })));
-    } else {
-      setGameOver(true);
-    }
-  };
-
-  if (!gameStarted) {
-    return (
-      <div className="max-w-2xl mx-auto p-6">
-        <Card className="p-6 text-center">
-          <h2 className="text-2xl font-bold mb-4">Health Battle</h2>
-          <p className="text-gray-600 mb-6">Compete with other players in a health quiz battle!</p>
-          <Button onClick={initializeGame} className="bg-purple-500 hover:bg-purple-600">
-            Start Battle
-          </Button>
-        </Card>
-      </div>
-    );
+const characters: Character[] = [
+  {
+    id: 'player',
+    name: 'Health Hero',
+    health: 100,
+    maxHealth: 100,
+    attack: 20,
+    defense: 10,
+    image: '/characters/hero.png'
+  },
+  {
+    id: 'enemy',
+    name: 'Disease Dragon',
+    health: 120,
+    maxHealth: 120,
+    attack: 15,
+    defense: 8,
+    image: '/characters/dragon.png'
   }
+];
+
+export function HealthBattle() {
+  const [player, setPlayer] = useState<Character>(characters[0]);
+  const [enemy, setEnemy] = useState<Character>(characters[1]);
+  const [isPlayerTurn, setIsPlayerTurn] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
+  const [message, setMessage] = useState('Battle begins!');
+
+  const performAction = (action: BattleAction) => {
+    if (gameOver) return;
+
+    let newPlayerHealth = player.health;
+    let newEnemyHealth = enemy.health;
+    let newMessage = '';
+
+    if (isPlayerTurn) {
+      switch (action.type) {
+        case 'attack':
+          const damage = Math.max(0, action.value - enemy.defense);
+          newEnemyHealth = Math.max(0, enemy.health - damage);
+          newMessage = `${player.name} attacks for ${damage} damage!`;
+          break;
+        case 'heal':
+          const healing = action.value;
+          newPlayerHealth = Math.min(player.maxHealth, player.health + healing);
+          newMessage = `${player.name} heals for ${healing} HP!`;
+          break;
+        case 'defend':
+          // Increase defense temporarily
+          setPlayer({ ...player, defense: player.defense + action.value });
+          newMessage = `${player.name} takes a defensive stance!`;
+          break;
+      }
+    } else {
+      // Enemy's turn
+      const damage = Math.max(0, enemy.attack - player.defense);
+      newPlayerHealth = Math.max(0, player.health - damage);
+      newMessage = `${enemy.name} attacks for ${damage} damage!`;
+    }
+
+    setPlayer({ ...player, health: newPlayerHealth });
+    setEnemy({ ...enemy, health: newEnemyHealth });
+    setMessage(newMessage);
+
+    if (newPlayerHealth <= 0) {
+      setGameOver(true);
+      setMessage(`${enemy.name} wins! Game Over!`);
+    } else if (newEnemyHealth <= 0) {
+      setGameOver(true);
+      setMessage(`${player.name} wins! Victory!`);
+    } else {
+      setIsPlayerTurn(!isPlayerTurn);
+    }
+  };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <Card className="p-6">
-        {!gameOver ? (
-          <>
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-2">
-                <Brain className="h-5 w-5 text-purple-500" />
-                <span className="font-semibold">Question {currentQuestion + 1}/{mockQuestions.length}</span>
+    <div className="container mx-auto py-6">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-center">Health Battle Arena</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 gap-8">
+            {/* Player */}
+            <div className="space-y-4">
+              <div className="text-center">
+                <h3 className="font-bold text-lg">{player.name}</h3>
+                <div className="relative w-32 h-32 mx-auto">
+                  <img
+                    src={player.image}
+                    alt={player.name}
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Timer className="h-5 w-5 text-blue-500" />
-                <span className="font-semibold">{timeLeft}s</span>
+              <Progress value={(player.health / player.maxHealth) * 100} />
+              <p className="text-center">HP: {player.health}/{player.maxHealth}</p>
+            </div>
+
+            {/* Enemy */}
+            <div className="space-y-4">
+              <div className="text-center">
+                <h3 className="font-bold text-lg">{enemy.name}</h3>
+                <div className="relative w-32 h-32 mx-auto">
+                  <img
+                    src={enemy.image}
+                    alt={enemy.name}
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
               </div>
+              <Progress value={(enemy.health / enemy.maxHealth) * 100} />
+              <p className="text-center">HP: {enemy.health}/{enemy.maxHealth}</p>
             </div>
-
-            <Progress value={(timeLeft / 15) * 100} className="mb-6" />
-
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              {players.map((player) => (
-                <Card key={player.id} className="p-4 text-center">
-                  <div className="flex flex-col items-center gap-2">
-                    <Avatar src={player.avatar} />
-                    <span className="font-semibold">{player.name}</span>
-                    <span className="text-sm text-gray-600">{player.score} pts</span>
-                  </div>
-                </Card>
-              ))}
-            </div>
-
-            <h3 className="text-xl font-semibold mb-6">{mockQuestions[currentQuestion].question}</h3>
-
-            <div className="grid grid-cols-2 gap-4">
-              {mockQuestions[currentQuestion].options.map((option) => (
-                <Button
-                  key={option}
-                  onClick={() => !players[0].answered && handleAnswer(option)}
-                  disabled={players[0].answered}
-                  className="p-4 h-auto text-left"
-                >
-                  {option}
-                </Button>
-              ))}
-            </div>
-          </>
-        ) : (
-          <div className="text-center">
-            <h3 className="text-2xl font-bold mb-6">Battle Results! 🏆</h3>
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              {players
-                .sort((a, b) => b.score - a.score)
-                .map((player, index) => (
-                  <Card key={player.id} className={`p-4 ${index === 0 ? 'bg-yellow-100' : ''}`}>
-                    <div className="flex flex-col items-center gap-2">
-                      <Avatar src={player.avatar} />
-                      <span className="font-semibold">{player.name}</span>
-                      <span className="text-lg font-bold">{player.score} pts</span>
-                      {index === 0 && <Trophy className="h-6 w-6 text-yellow-500" />}
-                    </div>
-                  </Card>
-                ))}
-            </div>
-            <Button onClick={initializeGame} className="bg-purple-500 hover:bg-purple-600">
-              Play Again
-            </Button>
           </div>
-        )}
+
+          {/* Battle Log */}
+          <div className="mt-6 p-4 bg-muted rounded-lg">
+            <p className="text-center font-medium">{message}</p>
+          </div>
+
+          {/* Action Buttons */}
+          {!gameOver && isPlayerTurn && (
+            <div className="mt-6 grid grid-cols-3 gap-4">
+              <Button
+                onClick={() => performAction({ type: 'attack', value: player.attack })}
+                className="flex items-center justify-center"
+              >
+                <Trophy className="mr-2 h-4 w-4" />
+                Attack
+              </Button>
+              <Button
+                onClick={() => performAction({ type: 'heal', value: 20 })}
+                className="flex items-center justify-center"
+              >
+                <Heart className="mr-2 h-4 w-4" />
+                Heal
+              </Button>
+              <Button
+                onClick={() => performAction({ type: 'defend', value: 5 })}
+                className="flex items-center justify-center"
+              >
+                <Shield className="mr-2 h-4 w-4" />
+                Defend
+              </Button>
+            </div>
+          )}
+
+          {/* Game Over */}
+          {gameOver && (
+            <div className="mt-6 text-center">
+              <Button
+                onClick={() => {
+                  setPlayer(characters[0]);
+                  setEnemy(characters[1]);
+                  setIsPlayerTurn(true);
+                  setGameOver(false);
+                  setMessage('Battle begins!');
+                }}
+              >
+                Play Again
+              </Button>
+            </div>
+          )}
+        </CardContent>
       </Card>
     </div>
   );

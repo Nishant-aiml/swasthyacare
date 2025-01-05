@@ -181,3 +181,4 @@ export default function QuizGame({ type, onComplete, onClose }: QuizGameProps) {
     </div>
   );
 }
+

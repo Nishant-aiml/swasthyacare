@@ -257,3 +257,4 @@ const PharmacyPage = () => {
 };
 
 export default PharmacyPage;
+

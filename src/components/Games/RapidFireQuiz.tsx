@@ -138,3 +138,4 @@ export function RapidFireQuiz() {
     </div>
   );
 }
+

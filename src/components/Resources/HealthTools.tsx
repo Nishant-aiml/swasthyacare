@@ -193,3 +193,4 @@ function WaterCalculatorTool({ onComplete }: { onComplete: (result: WaterIntakeC
 function SleepTrackerTool({ onComplete }: { onComplete: (result: SleepLog) => void }) {
   return <div>Sleep Tracker Tool Content</div>;
 }
+

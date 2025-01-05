@@ -6,8 +6,8 @@ import Leaderboard from '@/components/Funzone/Leaderboard';
 import HealthGames from '@/components/Funzone/HealthGames';
 import Challenges from '@/components/Funzone/Challenges';
 import MoodTracker from '@/components/Funzone/MoodTracker';
-import { Card } from '@/components/ui/Card';
-import { Progress } from '@/components/ui/Progress';
+import { Card } from "@/components/ui/Card";
+import { Progress } from "@/components/ui/Progress";
 import { 
   Brain, 
   Gift, 
@@ -236,3 +236,4 @@ export default function Funzone() {
     </div>
   );
 }
+

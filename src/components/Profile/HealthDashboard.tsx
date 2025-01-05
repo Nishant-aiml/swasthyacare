@@ -132,3 +132,4 @@ export default function HealthDashboard() {
     </div>
   );
 }
+
