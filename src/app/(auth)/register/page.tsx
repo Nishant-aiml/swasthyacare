@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '../../context/AuthContext';
-import { Button, Input, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../components/ui';
+import { useAuth } from '@/context/AuthContext';
+import { Button, Input, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui';
 import Link from 'next/link';
 
 export default function RegisterPage() {

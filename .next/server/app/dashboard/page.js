@@ -188,6 +188,158 @@ module.exports = require("next/dist/shared/lib/utils");
 
 /***/ }),
 
+/***/ 98061:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:assert");
+
+/***/ }),
+
+/***/ 92761:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:async_hooks");
+
+/***/ }),
+
+/***/ 72254:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:buffer");
+
+/***/ }),
+
+/***/ 40027:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:console");
+
+/***/ }),
+
+/***/ 6005:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:crypto");
+
+/***/ }),
+
+/***/ 65714:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:diagnostics_channel");
+
+/***/ }),
+
+/***/ 15673:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:events");
+
+/***/ }),
+
+/***/ 88849:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:http");
+
+/***/ }),
+
+/***/ 42725:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:http2");
+
+/***/ }),
+
+/***/ 87503:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:net");
+
+/***/ }),
+
+/***/ 39630:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:querystring");
+
+/***/ }),
+
+/***/ 84492:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:stream");
+
+/***/ }),
+
+/***/ 31764:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:tls");
+
+/***/ }),
+
+/***/ 41041:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:url");
+
+/***/ }),
+
+/***/ 47261:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:util");
+
+/***/ }),
+
+/***/ 93746:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:util/types");
+
+/***/ }),
+
+/***/ 24086:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:worker_threads");
+
+/***/ }),
+
+/***/ 65628:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:zlib");
+
+/***/ }),
+
+/***/ 71576:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("string_decoder");
+
+/***/ }),
+
 /***/ 2161:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -297,13 +449,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_navigation__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_navigation__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11440);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var modularize_import_loader_name_Calendar_from_default_as_default_join_esm_icons_calendar_lucide_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(517);
-/* harmony import */ var modularize_import_loader_name_FileText_from_default_as_default_join_esm_icons_file_text_lucide_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(39546);
-/* harmony import */ var modularize_import_loader_name_ExternalLink_from_default_as_default_join_esm_icons_external_link_lucide_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(65688);
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../context/AuthContext'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47335);
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(62248);
+/* harmony import */ var modularize_import_loader_name_Calendar_from_default_as_default_join_esm_icons_calendar_lucide_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(517);
+/* harmony import */ var modularize_import_loader_name_FileText_from_default_as_default_join_esm_icons_file_text_lucide_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(39546);
+/* harmony import */ var modularize_import_loader_name_ExternalLink_from_default_as_default_join_esm_icons_external_link_lucide_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(65688);
+/* harmony import */ var _context_AuthContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(63895);
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(47335);
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_6__);
 /* __next_internal_client_entry_do_not_use__ default auto */ 
 
 
@@ -314,17 +466,17 @@ Object(function webpackMissingModule() { var e = new Error("Cannot find module '
 
 
 
-const LocationMap = next_dynamic__WEBPACK_IMPORTED_MODULE_5___default()(null, {
+const LocationMap = next_dynamic__WEBPACK_IMPORTED_MODULE_6___default()(null, {
     loadableGenerated: {
         modules: [
-            "c:\\Users\\datta\\OneDrive\\Desktop\\swasthyacare\\swasthyacare\\src\\app\\dashboard\\page.tsx -> " + "../../../components/Maps/LocationMap"
+            "c:\\Users\\datta\\OneDrive\\Desktop\\swasthyacare\\swasthyacare\\src\\app\\dashboard\\page.tsx -> " + "@/components/Maps/LocationMap"
         ]
     },
     ssr: false
 });
 function Dashboard() {
     const router = (0,next_navigation__WEBPACK_IMPORTED_MODULE_2__.useRouter)();
-    const { user, loading, isAuthenticated } = Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../context/AuthContext'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())();
+    const { user, loading, isAuthenticated } = (0,_context_AuthContext__WEBPACK_IMPORTED_MODULE_5__/* .useAuth */ .aC)();
     const [userName, setUserName] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("");
     const [selectedLanguage, setSelectedLanguage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("en");
     const languages = [
@@ -423,20 +575,20 @@ function Dashboard() {
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                 className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4",
                 children: [
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .Card */ .Zb, {
                         children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardHeader */ .Ol, {
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardTitle */ .ll, {
                                     children: "Find Doctor"
                                 })
                             }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardContent */ .aY, {
                                 children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
                                     href: "/doctors",
                                     className: "text-primary hover:underline flex items-center",
                                     children: [
                                         "Search Doctors ",
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(modularize_import_loader_name_ExternalLink_from_default_as_default_join_esm_icons_external_link_lucide_react__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(modularize_import_loader_name_ExternalLink_from_default_as_default_join_esm_icons_external_link_lucide_react__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
                                             className: "ml-2 h-4 w-4"
                                         })
                                     ]
@@ -444,20 +596,20 @@ function Dashboard() {
                             })
                         ]
                     }),
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .Card */ .Zb, {
                         children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardHeader */ .Ol, {
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardTitle */ .ll, {
                                     children: "Book Appointment"
                                 })
                             }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardContent */ .aY, {
                                 children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
                                     href: "/appointments",
                                     className: "text-primary hover:underline flex items-center",
                                     children: [
                                         "Schedule Now ",
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(modularize_import_loader_name_Calendar_from_default_as_default_join_esm_icons_calendar_lucide_react__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(modularize_import_loader_name_Calendar_from_default_as_default_join_esm_icons_calendar_lucide_react__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
                                             className: "ml-2 h-4 w-4"
                                         })
                                     ]
@@ -465,20 +617,20 @@ function Dashboard() {
                             })
                         ]
                     }),
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .Card */ .Zb, {
                         children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardHeader */ .Ol, {
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardTitle */ .ll, {
                                     children: "Medical Records"
                                 })
                             }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardContent */ .aY, {
                                 children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
                                     href: "/records",
                                     className: "text-primary hover:underline flex items-center",
                                     children: [
                                         "View Records ",
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(modularize_import_loader_name_FileText_from_default_as_default_join_esm_icons_file_text_lucide_react__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(modularize_import_loader_name_FileText_from_default_as_default_join_esm_icons_file_text_lucide_react__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
                                             className: "ml-2 h-4 w-4"
                                         })
                                     ]
@@ -486,20 +638,20 @@ function Dashboard() {
                             })
                         ]
                     }),
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .Card */ .Zb, {
                         children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardHeader */ .Ol, {
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardTitle */ .ll, {
                                     children: "Health Tips"
                                 })
                             }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardContent */ .aY, {
                                 children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
                                     href: "/tips",
                                     className: "text-primary hover:underline flex items-center",
                                     children: [
                                         "Learn More ",
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(modularize_import_loader_name_ExternalLink_from_default_as_default_join_esm_icons_external_link_lucide_react__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(modularize_import_loader_name_ExternalLink_from_default_as_default_join_esm_icons_external_link_lucide_react__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
                                             className: "ml-2 h-4 w-4"
                                         })
                                     ]
@@ -511,14 +663,14 @@ function Dashboard() {
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                 className: "mt-6",
-                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .Card */ .Zb, {
                     children: [
-                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardHeader */ .Ol, {
+                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardTitle */ .ll, {
                                 children: "Nearby Healthcare Facilities"
                             })
                         }),
-                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ui__WEBPACK_IMPORTED_MODULE_4__/* .CardContent */ .aY, {
                             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                 className: "h-[400px] w-full",
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(LocationMap, {})
@@ -567,7 +719,7 @@ const __default__ = proxy.default;
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [478,939,528,335,421,906], () => (__webpack_exec__(2161)));
+var __webpack_exports__ = __webpack_require__.X(0, [478,787,538,335,421,527,248], () => (__webpack_exec__(2161)));
 module.exports = __webpack_exports__;
 
 })();
