@@ -1,14 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, User as UserIcon, LogOut, X } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import NotificationsPanel from './Notifications/NotificationsPanel';
 import { Button } from './ui/Button';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/Avatar';
-import { useAuth } from '@/context/AuthContext';
-import { cn } from '@/lib/utils';
+import { useAuth } from '../context/AuthContext';
+import { cn } from '../lib/utils';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);

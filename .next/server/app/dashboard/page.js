@@ -1,1 +1,573 @@
-(()=>{var e={};e.id=105,e.ids=[105],e.modules={846:e=>{"use strict";e.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},9121:e=>{"use strict";e.exports=require("next/dist/server/app-render/action-async-storage.external.js")},3295:e=>{"use strict";e.exports=require("next/dist/server/app-render/after-task-async-storage.external.js")},9294:e=>{"use strict";e.exports=require("next/dist/server/app-render/work-async-storage.external.js")},3033:e=>{"use strict";e.exports=require("next/dist/server/app-render/work-unit-async-storage.external.js")},3873:e=>{"use strict";e.exports=require("path")},7017:(e,r,t)=>{"use strict";t.r(r),t.d(r,{GlobalError:()=>a.a,__next_app__:()=>u,pages:()=>c,routeModule:()=>h,tree:()=>l});var n=t(260),o=t(8203),s=t(5155),a=t.n(s),i=t(7292),d={};for(let e in i)0>["default","tree","pages","GlobalError","__next_app__","routeModule"].indexOf(e)&&(d[e]=()=>i[e]);t.d(r,d);let l=["",{children:["dashboard",{children:["__PAGE__",{},{page:[()=>Promise.resolve().then(t.bind(t,7154)),"c:\\Users\\datta\\OneDrive\\Desktop\\swasthyacare\\swasthyacare\\src\\app\\dashboard\\page.tsx"]}]},{}]},{layout:[()=>Promise.resolve().then(t.bind(t,1354)),"c:\\Users\\datta\\OneDrive\\Desktop\\swasthyacare\\swasthyacare\\src\\app\\layout.tsx"],"not-found":[()=>Promise.resolve().then(t.t.bind(t,9937,23)),"next/dist/client/components/not-found-error"],forbidden:[()=>Promise.resolve().then(t.t.bind(t,9116,23)),"next/dist/client/components/forbidden-error"],unauthorized:[()=>Promise.resolve().then(t.t.bind(t,1485,23)),"next/dist/client/components/unauthorized-error"]}],c=["c:\\Users\\datta\\OneDrive\\Desktop\\swasthyacare\\swasthyacare\\src\\app\\dashboard\\page.tsx"],u={require:t,loadChunk:()=>Promise.resolve()},h=new n.AppPageRouteModule({definition:{kind:o.RouteKind.APP_PAGE,page:"/dashboard/page",pathname:"/dashboard",bundlePath:"",filename:"",appPaths:[]},userland:{loaderTree:l}})},4316:(e,r,t)=>{Promise.resolve().then(t.t.bind(t,3219,23)),Promise.resolve().then(t.t.bind(t,4863,23)),Promise.resolve().then(t.t.bind(t,5155,23)),Promise.resolve().then(t.t.bind(t,802,23)),Promise.resolve().then(t.t.bind(t,9350,23)),Promise.resolve().then(t.t.bind(t,8530,23)),Promise.resolve().then(t.t.bind(t,8921,23))},748:(e,r,t)=>{Promise.resolve().then(t.t.bind(t,6959,23)),Promise.resolve().then(t.t.bind(t,3875,23)),Promise.resolve().then(t.t.bind(t,8903,23)),Promise.resolve().then(t.t.bind(t,7174,23)),Promise.resolve().then(t.t.bind(t,4178,23)),Promise.resolve().then(t.t.bind(t,7190,23)),Promise.resolve().then(t.t.bind(t,1365,23))},3391:(e,r,t)=>{Promise.resolve().then(t.bind(t,7154))},4020:(e,r,t)=>{Promise.resolve().then(t.bind(t,3032))},7760:(e,r,t)=>{Promise.resolve().then(t.bind(t,3104))},2608:(e,r,t)=>{Promise.resolve().then(t.bind(t,5476))},5670:(e,r,t)=>{"use strict";t.d(r,{default:()=>o.a});var n=t(6256),o=t.n(n)},6256:(e,r,t)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"default",{enumerable:!0,get:function(){return o}});let n=t(5488)._(t(568));function o(e,r){var t;let o={};"function"==typeof e&&(o.loader=e);let s={...o,...r};return(0,n.default)({...s,modules:null==(t=s.loadableGenerated)?void 0:t.modules})}("function"==typeof r.default||"object"==typeof r.default&&null!==r.default)&&void 0===r.default.__esModule&&(Object.defineProperty(r.default,"__esModule",{value:!0}),Object.assign(r.default,r),e.exports=r.default)},3400:(e,r)=>{"use strict";function t(e){return e.split("/").map(e=>encodeURIComponent(e)).join("/")}Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"encodeURIPath",{enumerable:!0,get:function(){return t}})},5771:(e,r,t)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"BailoutToCSR",{enumerable:!0,get:function(){return o}});let n=t(4639);function o(e){let{reason:r,children:t}=e;throw new n.BailoutToCSRError(r)}},568:(e,r,t)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"default",{enumerable:!0,get:function(){return l}});let n=t(5512),o=t(8009),s=t(5771),a=t(6054);function i(e){return{default:e&&"default"in e?e.default:e}}let d={loader:()=>Promise.resolve(i(()=>null)),loading:null,ssr:!0},l=function(e){let r={...d,...e},t=(0,o.lazy)(()=>r.loader().then(i)),l=r.loading;function c(e){let i=l?(0,n.jsx)(l,{isLoading:!0,pastDelay:!0,error:null}):null,d=!r.ssr||!!r.loading,c=d?o.Suspense:o.Fragment,u=r.ssr?(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(a.PreloadChunks,{moduleIds:r.modules}),(0,n.jsx)(t,{...e})]}):(0,n.jsx)(s.BailoutToCSR,{reason:"next/dynamic",children:(0,n.jsx)(t,{...e})});return(0,n.jsx)(c,{...d?{fallback:i}:{},children:u})}return c.displayName="LoadableComponent",c}},6054:(e,r,t)=>{"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"PreloadChunks",{enumerable:!0,get:function(){return i}});let n=t(5512),o=t(5740),s=t(9294),a=t(3400);function i(e){let{moduleIds:r}=e,t=s.workAsyncStorage.getStore();if(void 0===t)return null;let i=[];if(t.reactLoadableManifest&&r){let e=t.reactLoadableManifest;for(let t of r){if(!e[t])continue;let r=e[t].files;i.push(...r)}}return 0===i.length?null:(0,n.jsx)(n.Fragment,{children:i.map(e=>{let r=t.assetPrefix+"/_next/"+(0,a.encodeURIPath)(e);return e.endsWith(".css")?(0,n.jsx)("link",{precedence:"dynamic",href:r,rel:"stylesheet",as:"style"},e):((0,o.preload)(r,{as:"script",fetchPriority:"low"}),null)})})}},3032:(e,r,t)=>{"use strict";t.r(r),t.d(r,{default:()=>x});var n=t(5512),o=t(8009),s=t(9334),a=t(8531),i=t.n(a),d={xmlns:"http://www.w3.org/2000/svg",width:24,height:24,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"};let l=e=>e.replace(/([a-z0-9])([A-Z])/g,"$1-$2").toLowerCase(),c=(e,r)=>{let t=(0,o.forwardRef)(({color:t="currentColor",size:n=24,strokeWidth:s=2,absoluteStrokeWidth:a,children:i,...c},u)=>(0,o.createElement)("svg",{ref:u,...d,width:n,height:n,stroke:t,strokeWidth:a?24*Number(s)/Number(n):s,className:`lucide lucide-${l(e)}`,...c},[...r.map(([e,r])=>(0,o.createElement)(e,r)),...(Array.isArray(i)?i:[i])||[]]));return t.displayName=`${e}`,t},u=c("ExternalLink",[["path",{d:"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6",key:"a6xqqp"}],["polyline",{points:"15 3 21 3 21 9",key:"mznyad"}],["line",{x1:"10",x2:"21",y1:"14",y2:"3",key:"18c3s4"}]]),h=c("Calendar",[["rect",{width:"18",height:"18",x:"3",y:"4",rx:"2",ry:"2",key:"eu3xkr"}],["line",{x1:"16",x2:"16",y1:"2",y2:"6",key:"m3sa8f"}],["line",{x1:"8",x2:"8",y1:"2",y2:"6",key:"18kwsl"}],["line",{x1:"3",x2:"21",y1:"10",y2:"10",key:"xt86sb"}]]),m=c("FileText",[["path",{d:"M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z",key:"1nnpy2"}],["polyline",{points:"14 2 14 8 20 8",key:"1ew0cm"}],["line",{x1:"16",x2:"8",y1:"13",y2:"13",key:"14keom"}],["line",{x1:"16",x2:"8",y1:"17",y2:"17",key:"17nazh"}],["line",{x1:"10",x2:"8",y1:"9",y2:"9",key:"1a5vjj"}]]);var p=t(5670);(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e})(),function(){var e=Error("Cannot find module '@/context/AuthContext'");throw e.code="MODULE_NOT_FOUND",e}();let f=(0,p.default)(async()=>{!function(){var e=Error("Cannot find module '@/components/Maps/LocationMap'");throw e.code="MODULE_NOT_FOUND",e}()},{loadableGenerated:{modules:["app\\dashboard\\page.tsx -> @/components/Maps/LocationMap"]},ssr:!1});function x(){(0,s.useRouter)();let{user:e,loading:r,isAuthenticated:t}=Object(function(){var e=Error("Cannot find module '@/context/AuthContext'");throw e.code="MODULE_NOT_FOUND",e}())(),[a,d]=(0,o.useState)(""),[l,c]=(0,o.useState)("en"),p={en:["Good morning","Good afternoon","Good evening"],hi:["शुभ प्रभात","शुभ दोपहर","शुभ संध्या"],te:["శుభోదయం","శుభ మధ్యాహ్నం","శుభ సాయంత్రం"]};return r?(0,n.jsx)("div",{children:"Loading..."}):t?(0,n.jsxs)("div",{className:"container mx-auto p-4 space-y-6",children:[(0,n.jsxs)("div",{className:"flex flex-col md:flex-row justify-between items-start md:items-center mb-6",children:[(0,n.jsxs)("div",{children:[(0,n.jsxs)("h1",{className:"text-3xl font-bold",children:[(()=>{let e=new Date().getHours();return p[l][e<12?0:e<17?1:2]})(),", ",a]}),(0,n.jsx)("p",{className:"text-muted-foreground",children:"Welcome to your healthcare dashboard"})]}),(0,n.jsx)("div",{className:"mt-4 md:mt-0",children:(0,n.jsx)("select",{value:l,onChange:e=>c(e.target.value),className:"p-2 border rounded-md",children:[{code:"en",name:"English"},{code:"hi",name:"Hindi"},{code:"te",name:"Telugu"}].map(e=>(0,n.jsx)("option",{value:e.code,children:e.name},e.code))})})]}),(0,n.jsxs)("div",{className:"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4",children:[(0,n.jsxs)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:[(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:"Find Doctor"})}),(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:(0,n.jsxs)(i(),{href:"/doctors",className:"text-primary hover:underline flex items-center",children:["Search Doctors ",(0,n.jsx)(u,{className:"ml-2 h-4 w-4"})]})})]}),(0,n.jsxs)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:[(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:"Book Appointment"})}),(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:(0,n.jsxs)(i(),{href:"/appointments",className:"text-primary hover:underline flex items-center",children:["Schedule Now ",(0,n.jsx)(h,{className:"ml-2 h-4 w-4"})]})})]}),(0,n.jsxs)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:[(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:"Medical Records"})}),(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:(0,n.jsxs)(i(),{href:"/records",className:"text-primary hover:underline flex items-center",children:["View Records ",(0,n.jsx)(m,{className:"ml-2 h-4 w-4"})]})})]}),(0,n.jsxs)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:[(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:"Health Tips"})}),(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:(0,n.jsxs)(i(),{href:"/tips",className:"text-primary hover:underline flex items-center",children:["Learn More ",(0,n.jsx)(u,{className:"ml-2 h-4 w-4"})]})})]})]}),(0,n.jsx)("div",{className:"mt-6",children:(0,n.jsxs)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:[(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:"Nearby Healthcare Facilities"})}),(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/components/ui/Card'");throw e.code="MODULE_NOT_FOUND",e}()),{children:(0,n.jsx)("div",{className:"h-[400px] w-full",children:(0,n.jsx)(f,{})})})]})})]}):null}},5476:(e,r,t)=>{"use strict";t.d(r,{Providers:()=>s});var n=t(5512),o=t(2478);function s({children:e}){return(0,n.jsx)(o.N,{attribute:"class",defaultTheme:"system",enableSystem:!0,children:(0,n.jsx)(Object(function(){var e=Error("Cannot find module '@/context/AuthContext'");throw e.code="MODULE_NOT_FOUND",e}()),{children:e})})}!function(){var e=Error("Cannot find module '@/context/AuthContext'");throw e.code="MODULE_NOT_FOUND",e}()},7154:(e,r,t)=>{"use strict";t.r(r),t.d(r,{default:()=>n});let n=(0,t(6760).registerClientReference)(function(){throw Error("Attempted to call the default export of \"c:\\\\Users\\\\datta\\\\OneDrive\\\\Desktop\\\\swasthyacare\\\\swasthyacare\\\\src\\\\app\\\\dashboard\\\\page.tsx\" from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"c:\\Users\\datta\\OneDrive\\Desktop\\swasthyacare\\swasthyacare\\src\\app\\dashboard\\page.tsx","default")},1354:(e,r,t)=>{"use strict";t.r(r),t.d(r,{default:()=>l,metadata:()=>i,viewport:()=>d});var n=t(2740);t(1135);var o=t(5041),s=t.n(o),a=t(3104);let i={title:"SwasthyaCare - Your Healthcare Companion",description:"Find nearby healthcare facilities and emergency services",manifest:"/manifest.json",icons:{apple:"/icons/icon-192x192.png"}},d={themeColor:"#4F46E5"};function l({children:e}){return(0,n.jsxs)("html",{lang:"en",suppressHydrationWarning:!0,children:[(0,n.jsx)("head",{children:(0,n.jsx)("link",{rel:"stylesheet",href:"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",integrity:"sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=",crossOrigin:""})}),(0,n.jsx)("body",{className:s().className,children:(0,n.jsx)(a.Providers,{children:e})})]})}},3104:(e,r,t)=>{"use strict";t.d(r,{Providers:()=>n});let n=(0,t(6760).registerClientReference)(function(){throw Error("Attempted to call Providers() from the server but Providers is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"c:\\Users\\datta\\OneDrive\\Desktop\\swasthyacare\\swasthyacare\\src\\app\\providers.tsx","Providers")},1135:()=>{}};var r=require("../../webpack-runtime.js");r.C(e);var t=e=>r(r.s=e),n=r.X(0,[994,796,730],()=>t(7017));module.exports=n})();
+(() => {
+var exports = {};
+exports.id = 702;
+exports.ids = [702];
+exports.modules = {
+
+/***/ 18038:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/compiled/react");
+
+/***/ }),
+
+/***/ 98704:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/compiled/react-dom/server-rendering-stub");
+
+/***/ }),
+
+/***/ 97897:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/compiled/react-server-dom-webpack/client");
+
+/***/ }),
+
+/***/ 56786:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/compiled/react/jsx-runtime");
+
+/***/ }),
+
+/***/ 5868:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/server/app-render/app-render");
+
+/***/ }),
+
+/***/ 41844:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/server/app-render/get-segment-param");
+
+/***/ }),
+
+/***/ 96624:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/server/future/helpers/interception-routes");
+
+/***/ }),
+
+/***/ 75281:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/server/future/route-modules/route-module");
+
+/***/ }),
+
+/***/ 57085:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/app-router-context");
+
+/***/ }),
+
+/***/ 20199:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/hash");
+
+/***/ }),
+
+/***/ 39569:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/hooks-client-context");
+
+/***/ }),
+
+/***/ 17160:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/router-context");
+
+/***/ }),
+
+/***/ 30893:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/router/utils/add-path-prefix");
+
+/***/ }),
+
+/***/ 12336:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/router/utils/format-url");
+
+/***/ }),
+
+/***/ 17887:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/router/utils/handle-smooth-scroll");
+
+/***/ }),
+
+/***/ 98735:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/router/utils/is-bot");
+
+/***/ }),
+
+/***/ 60120:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/router/utils/is-local-url");
+
+/***/ }),
+
+/***/ 68231:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/router/utils/parse-path");
+
+/***/ }),
+
+/***/ 54614:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/router/utils/path-has-prefix");
+
+/***/ }),
+
+/***/ 53750:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/router/utils/remove-trailing-slash");
+
+/***/ }),
+
+/***/ 70982:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/router/utils/resolve-href");
+
+/***/ }),
+
+/***/ 79618:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/server-inserted-html");
+
+/***/ }),
+
+/***/ 78423:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/utils");
+
+/***/ }),
+
+/***/ 2161:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   GlobalError: () => (/* reexport default from dynamic */ next_dist_client_components_error_boundary__WEBPACK_IMPORTED_MODULE_2___default.a),
+/* harmony export */   __next_app__: () => (/* binding */ __next_app__),
+/* harmony export */   originalPathname: () => (/* binding */ originalPathname),
+/* harmony export */   pages: () => (/* binding */ pages),
+/* harmony export */   routeModule: () => (/* binding */ routeModule),
+/* harmony export */   tree: () => (/* binding */ tree)
+/* harmony export */ });
+/* harmony import */ var next_dist_server_future_route_modules_app_page_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7262);
+/* harmony import */ var next_dist_server_future_route_modules_app_page_module__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_future_route_modules_app_page_module__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19513);
+/* harmony import */ var next_dist_client_components_error_boundary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(31823);
+/* harmony import */ var next_dist_client_components_error_boundary__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dist_client_components_error_boundary__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(12502);
+/* harmony import */ var next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3__) if(["default","tree","pages","GlobalError","originalPathname","__next_app__","routeModule"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+// @ts-ignore this need to be imported from next/dist to be external
+
+
+const AppPageRouteModule = next_dist_server_future_route_modules_app_page_module__WEBPACK_IMPORTED_MODULE_0__.AppPageRouteModule;
+// We inject the tree and pages here so that we can use them in the route
+// module.
+const tree = {
+        children: [
+        '',
+        {
+        children: [
+        'dashboard',
+        {
+        children: ['__PAGE__', {}, {
+          page: [() => Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 64644)), "c:\\Users\\datta\\OneDrive\\Desktop\\swasthyacare\\swasthyacare\\src\\app\\dashboard\\page.tsx"],
+          
+        }]
+      },
+        {
+        
+        
+      }
+      ]
+      },
+        {
+        'layout': [() => Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 26921)), "c:\\Users\\datta\\OneDrive\\Desktop\\swasthyacare\\swasthyacare\\src\\app\\layout.tsx"],
+'not-found': [() => Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 95493, 23)), "next/dist/client/components/not-found-error"],
+        
+      }
+      ]
+      }.children;
+const pages = ["c:\\Users\\datta\\OneDrive\\Desktop\\swasthyacare\\swasthyacare\\src\\app\\dashboard\\page.tsx"];
+
+// @ts-expect-error - replaced by webpack/turbopack loader
+
+const __next_app_require__ = __webpack_require__
+const __next_app_load_chunk__ = () => Promise.resolve()
+const originalPathname = "/dashboard/page";
+const __next_app__ = {
+    require: __next_app_require__,
+    loadChunk: __next_app_load_chunk__
+};
+
+// Create and export the route module that will be consumed.
+const routeModule = new AppPageRouteModule({
+    definition: {
+        kind: next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__.RouteKind.APP_PAGE,
+        page: "/dashboard/page",
+        pathname: "/dashboard",
+        // The following aren't used in production.
+        bundlePath: "",
+        filename: "",
+        appPaths: []
+    },
+    userland: {
+        loaderTree: tree
+    }
+});
+
+//# sourceMappingURL=app-page.js.map
+
+/***/ }),
+
+/***/ 91371:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 38058))
+
+/***/ }),
+
+/***/ 38058:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Dashboard)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(56786);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18038);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_navigation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(57114);
+/* harmony import */ var next_navigation__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_navigation__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11440);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var modularize_import_loader_name_Calendar_from_default_as_default_join_esm_icons_calendar_lucide_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(517);
+/* harmony import */ var modularize_import_loader_name_FileText_from_default_as_default_join_esm_icons_file_text_lucide_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(39546);
+/* harmony import */ var modularize_import_loader_name_ExternalLink_from_default_as_default_join_esm_icons_external_link_lucide_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(65688);
+Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../context/AuthContext'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(47335);
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_5__);
+/* __next_internal_client_entry_do_not_use__ default auto */ 
+
+
+
+
+
+
+
+
+
+const LocationMap = next_dynamic__WEBPACK_IMPORTED_MODULE_5___default()(null, {
+    loadableGenerated: {
+        modules: [
+            "c:\\Users\\datta\\OneDrive\\Desktop\\swasthyacare\\swasthyacare\\src\\app\\dashboard\\page.tsx -> " + "../../../components/Maps/LocationMap"
+        ]
+    },
+    ssr: false
+});
+function Dashboard() {
+    const router = (0,next_navigation__WEBPACK_IMPORTED_MODULE_2__.useRouter)();
+    const { user, loading, isAuthenticated } = Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../context/AuthContext'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())();
+    const [userName, setUserName] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("");
+    const [selectedLanguage, setSelectedLanguage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("en");
+    const languages = [
+        {
+            code: "en",
+            name: "English"
+        },
+        {
+            code: "hi",
+            name: "Hindi"
+        },
+        {
+            code: "te",
+            name: "Telugu"
+        }
+    ];
+    const greetings = {
+        en: [
+            "Good morning",
+            "Good afternoon",
+            "Good evening"
+        ],
+        hi: [
+            "शुभ प्रभात",
+            "शुभ दोपहर",
+            "शुभ संध्या"
+        ],
+        te: [
+            "శుభోదయం",
+            "శుభ మధ్యాహ్నం",
+            "శుభ సాయంత్రం"
+        ]
+    };
+    const getTimeBasedGreeting = ()=>{
+        const hour = new Date().getHours();
+        const index = hour < 12 ? 0 : hour < 17 ? 1 : 2;
+        return greetings[selectedLanguage][index];
+    };
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        if (!isAuthenticated && !loading) {
+            router.push("/login");
+        }
+        if (user) {
+            setUserName(user.displayName || "User");
+        }
+    }, [
+        user,
+        isAuthenticated,
+        loading,
+        router
+    ]);
+    if (loading) {
+        return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+            children: "Loading..."
+        });
+    }
+    if (!isAuthenticated) {
+        return null;
+    }
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "container mx-auto p-4 space-y-6",
+        children: [
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "flex flex-col md:flex-row justify-between items-start md:items-center mb-6",
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
+                                className: "text-3xl font-bold",
+                                children: [
+                                    getTimeBasedGreeting(),
+                                    ", ",
+                                    userName
+                                ]
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                className: "text-muted-foreground",
+                                children: "Welcome to your healthcare dashboard"
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                        className: "mt-4 md:mt-0",
+                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("select", {
+                            value: selectedLanguage,
+                            onChange: (e)=>setSelectedLanguage(e.target.value),
+                            className: "p-2 border rounded-md",
+                            children: languages.map((lang)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("option", {
+                                    value: lang.code,
+                                    children: lang.name
+                                }, lang.code))
+                        })
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4",
+                children: [
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                        children: [
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                    children: "Find Doctor"
+                                })
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
+                                    href: "/doctors",
+                                    className: "text-primary hover:underline flex items-center",
+                                    children: [
+                                        "Search Doctors ",
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(modularize_import_loader_name_ExternalLink_from_default_as_default_join_esm_icons_external_link_lucide_react__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+                                            className: "ml-2 h-4 w-4"
+                                        })
+                                    ]
+                                })
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                        children: [
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                    children: "Book Appointment"
+                                })
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
+                                    href: "/appointments",
+                                    className: "text-primary hover:underline flex items-center",
+                                    children: [
+                                        "Schedule Now ",
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(modularize_import_loader_name_Calendar_from_default_as_default_join_esm_icons_calendar_lucide_react__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+                                            className: "ml-2 h-4 w-4"
+                                        })
+                                    ]
+                                })
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                        children: [
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                    children: "Medical Records"
+                                })
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
+                                    href: "/records",
+                                    className: "text-primary hover:underline flex items-center",
+                                    children: [
+                                        "View Records ",
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(modularize_import_loader_name_FileText_from_default_as_default_join_esm_icons_file_text_lucide_react__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
+                                            className: "ml-2 h-4 w-4"
+                                        })
+                                    ]
+                                })
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                        children: [
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                    children: "Health Tips"
+                                })
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
+                                    href: "/tips",
+                                    className: "text-primary hover:underline flex items-center",
+                                    children: [
+                                        "Learn More ",
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(modularize_import_loader_name_ExternalLink_from_default_as_default_join_esm_icons_external_link_lucide_react__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+                                            className: "ml-2 h-4 w-4"
+                                        })
+                                    ]
+                                })
+                            })
+                        ]
+                    })
+                ]
+            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                className: "mt-6",
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                    children: [
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                                children: "Nearby Healthcare Facilities"
+                            })
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../components/ui'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                                className: "h-[400px] w-full",
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(LocationMap, {})
+                            })
+                        })
+                    ]
+                })
+            })
+        ]
+    });
+}
+
+
+/***/ }),
+
+/***/ 64644:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   $$typeof: () => (/* binding */ $$typeof),
+/* harmony export */   __esModule: () => (/* binding */ __esModule),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(61363);
+
+const proxy = (0,next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__.createProxy)(String.raw`c:\Users\datta\OneDrive\Desktop\swasthyacare\swasthyacare\src\app\dashboard\page.tsx`)
+
+// Accessing the __esModule property and exporting $$typeof are required here.
+// The __esModule getter forces the proxy target to create the default export
+// and the $$typeof value is for rendering logic to determine if the module
+// is a client boundary.
+const { __esModule, $$typeof } = proxy;
+const __default__ = proxy.default;
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__default__);
+
+/***/ })
+
+};
+;
+
+// load runtime
+var __webpack_require__ = require("../../webpack-runtime.js");
+__webpack_require__.C(exports);
+var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+var __webpack_exports__ = __webpack_require__.X(0, [478,939,528,335,421,906], () => (__webpack_exec__(2161)));
+module.exports = __webpack_exports__;
+
+})();
