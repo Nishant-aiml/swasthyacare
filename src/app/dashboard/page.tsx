@@ -3,14 +3,14 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui';
 import { Calendar, FileText, ExternalLink } from 'lucide-react';
-import { useAuth } from '@/context/AuthContext';
+import { useAuth } from '../../../context/AuthContext';
 import { format } from 'date-fns';
 import dynamic from 'next/dynamic';
 
 const LocationMap = dynamic(
-  () => import('@/components/Maps/LocationMap').then((mod) => mod.LocationMap),
+  () => import('../../../components/Maps/LocationMap').then((mod) => mod.LocationMap),
   { ssr: false }
 );
 

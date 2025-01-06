@@ -2,13 +2,13 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Header from '@/components/header';
-import dynamic from 'next/dynamic'
+import Header from '../components/header';
+import dynamic from 'next/dynamic';
 
 const LocationMap = dynamic(
-  () => import('@/components/Maps/LocationMap').then((mod) => mod.LocationMap),
+  () => import('../components/Maps/LocationMap').then((mod) => mod.LocationMap),
   { ssr: false }
-)
+);
 
 export default function Home() {
   return (
